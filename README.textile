@@ -1,1 +1,13 @@
-This project has been renamed and moved to http://github.com/michael/ken/
+Please check the wiki first to get an idea what this project is about "http://wiki.github.com/michael/ken":http://wiki.github.com/michael/ken
+
+h1. Short demo of very basic initial functionality
+
+<pre>
+<code>
+  the_police = Mql.first(:id => "/en/the_police", :origin => nil, :name => nil, :active_start => nil, :active_end => nil)
+  
+  the_police.name # => "The Police"
+  the_police.active_start # => 1977-01
+  the_police.active_end # => 1986
+</code>
+</pre>
