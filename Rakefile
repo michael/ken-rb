@@ -13,10 +13,8 @@ EMAIL            = 'ma[at]zive[dot]at'
 GEM_NAME         = 'ken'
 GEM_VERSION      = '0.0.1'# Ken::VERSION
 GEM_DEPENDENCIES = [
-  [ 'ParseTree', '~>3.0.3'   ],
-  [ 'ruby2ruby', '~>1.2.2'   ],
-  [ 'extlib', '~>0.9.10'     ],
-  [ 'addressable', '~>2.0.1' ]
+  [ 'extlib', '>=0.9.10'     ]
+  # [ 'addressable', '~>2.0.1' ]
 ]
 
 GEM_CLEAN  = %w[ log pkg coverage ]
