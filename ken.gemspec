@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email = ["ma [a] zive [d] at"]
   s.extra_rdoc_files = ["README.txt", "LICENSE", "TODO", "History.txt"]
   s.files = ["History.txt", "LICENSE", "Manifest.txt", "README.txt",
-             "README.textile", "Rakefile", "TODO", "examples/ken.rb", 
+             "README.textile", "Rakefile", "TODO", "examples/artist.rb", 
              "lib/ken.rb", "lib/ken/attribute.rb", "lib/ken/collection.rb", "lib/ken/logger.rb",
              "lib/ken/property.rb", "lib/ken/resource.rb", "lib/ken/session.rb", "lib/ken/type.rb",
              "lib/ken/util.rb", "lib/ken/version.rb", "lib/ken/view.rb", "spec/unit/attribute_spec.rb",
