@@ -1,0 +1,891 @@
+{
+  "id" : "/en/the_police",
+  "name" : "The Police",
+  "type" : [
+    {
+      "id" : "/music/artist",
+      "name" : "Musical Artist",
+      "properties" : [
+        {
+          "expected_type" : "/location/location",
+          "id" : "/music/artist/origin",
+          "name" : "Place Musical Career Began",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/type/datetime",
+          "id" : "/music/artist/active_start",
+          "name" : "Active as Musical Artist (start)",
+          "unique" : true
+        },
+        {
+          "expected_type" : "/type/datetime",
+          "id" : "/music/artist/active_end",
+          "name" : "Active as Musical Artist (end)",
+          "unique" : true
+        },
+        {
+          "expected_type" : "/music/genre",
+          "id" : "/music/artist/genre",
+          "name" : "Musical Genres",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/record_label",
+          "id" : "/music/artist/label",
+          "name" : "Record Labels",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/artist",
+          "id" : "/music/artist/similar_artist",
+          "name" : "Similar Artists",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/common/webpage",
+          "id" : "/music/artist/home_page",
+          "name" : "Musical Artist Home Page",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/common/webpage",
+          "id" : "/music/artist/acquire_webpage",
+          "name" : "Web Page for Music",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/album",
+          "id" : "/music/artist/album",
+          "name" : "Albums",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/recording_contribution",
+          "id" : "/music/artist/contribution",
+          "name" : "Album Contributions",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/track",
+          "id" : "/music/artist/track",
+          "name" : "Tracks Recorded",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/artist",
+          "id" : "/music/artist/artist_similar",
+          "name" : "Similar Musical Artists",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/track_contribution",
+          "id" : "/music/artist/track_contributions",
+          "name" : "Track Contributions",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/instrument",
+          "id" : "/music/artist/instruments_played",
+          "name" : "Instruments Played",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/voice",
+          "id" : "/music/artist/vocal_range",
+          "name" : "Vocal Range",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/concert_tour",
+          "id" : "/music/artist/concert_tours",
+          "name" : "Concert Tours",
+          "unique" : false
+        }
+      ]
+    },
+    {
+      "id" : "/common/topic",
+      "name" : "Topic",
+      "properties" : [
+        {
+          "expected_type" : "/type/text",
+          "id" : "/common/topic/alias",
+          "name" : "Also known as",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/common/document",
+          "id" : "/common/topic/article",
+          "name" : "article",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/common/image",
+          "id" : "/common/topic/image",
+          "name" : "image",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/common/webpage",
+          "id" : "/common/topic/webpage",
+          "name" : "Web Link(s)",
+          "unique" : null
+        }
+      ]
+    },
+    {
+      "id" : "/music/producer",
+      "name" : "Record Producer",
+      "properties" : [
+        {
+          "expected_type" : "/music/album",
+          "id" : "/music/producer/albums_produced",
+          "name" : "Albums Produced",
+          "unique" : null
+        },
+        {
+          "expected_type" : "/music/track",
+          "id" : "/music/producer/tracks_produced",
+          "name" : "Tracks produced",
+          "unique" : false
+        }
+      ]
+    },
+    {
+      "id" : "/music/musical_group",
+      "name" : "Musical Group",
+      "properties" : [
+        {
+          "expected_type" : "/music/group_membership",
+          "id" : "/music/musical_group/member",
+          "name" : "Members Of Musical Group",
+          "unique" : null
+        }
+      ]
+    },
+    {
+      "id" : "/broadcast/artist",
+      "name" : "Broadcast Artist",
+      "properties" : [
+        {
+          "expected_type" : "/broadcast/content",
+          "id" : "/broadcast/artist/content",
+          "name" : "Content",
+          "unique" : null
+        }
+      ]
+    },
+    {
+      "id" : "/award/award_winner",
+      "name" : "Award Winner",
+      "properties" : [
+        {
+          "expected_type" : "/award/award_honor",
+          "id" : "/award/award_winner/awards_won",
+          "name" : "Awards Won",
+          "unique" : null
+        }
+      ]
+    }
+  ],
+  "attribute" : {
+    "/type/reflect/any_master" : [
+      {
+        "id" : "/boot/all_permission",
+        "link" : "/type/object/permission",
+        "name" : "Global Write Permission"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000006df25",
+        "link" : "/common/topic/article",
+        "name" : null
+      },
+      {
+        "id" : "/music/artist",
+        "link" : "/type/object/type",
+        "name" : "Musical Artist"
+      },
+      {
+        "id" : "/common/topic",
+        "link" : "/type/object/type",
+        "name" : "Topic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000003921d3c",
+        "link" : "/common/topic/webpage",
+        "name" : "Discogs entry"
+      },
+      {
+        "id" : "/wikipedia/images/en_id/982873",
+        "link" : "/common/topic/image",
+        "name" : null
+      },
+      {
+        "id" : "/en/rock_music",
+        "link" : "/music/artist/genre",
+        "name" : "Rock music"
+      },
+      {
+        "id" : "/en/ska",
+        "link" : "/music/artist/genre",
+        "name" : "Ska"
+      },
+      {
+        "id" : "/en/reggae",
+        "link" : "/music/artist/genre",
+        "name" : "Reggae"
+      },
+      {
+        "id" : "/en/london",
+        "link" : "/music/artist/origin",
+        "name" : "London"
+      },
+      {
+        "id" : "/music/producer",
+        "link" : "/type/object/type",
+        "name" : "Record Producer"
+      },
+      {
+        "id" : "/music/musical_group",
+        "link" : "/type/object/type",
+        "name" : "Musical Group"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000072a23e1",
+        "link" : "/common/topic/webpage",
+        "name" : null
+      },
+      {
+        "id" : "/en/new_wave",
+        "link" : "/music/artist/genre",
+        "name" : "New Wave"
+      },
+      {
+        "id" : "/en/a_m_records",
+        "link" : "/music/artist/label",
+        "name" : "A&amp;M Records"
+      },
+      {
+        "id" : "/en/polydor_records",
+        "link" : "/music/artist/label",
+        "name" : "Polydor Records"
+      },
+      {
+        "id" : "/en/illegal_records",
+        "link" : "/music/artist/label",
+        "name" : "Illegal Records"
+      },
+      {
+        "id" : "/en/post-punk",
+        "link" : "/music/artist/genre",
+        "name" : "Post-punk"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000082147dd",
+        "link" : "/common/topic/webpage",
+        "name" : null
+      },
+      {
+        "id" : "/wikipedia/images/commons_id/3520500",
+        "link" : "/common/topic/image",
+        "name" : "The Police performing live on August 1, 2007 at Madison Square Garden, New York."
+      },
+      {
+        "id" : "/broadcast/artist",
+        "link" : "/type/object/type",
+        "name" : "Broadcast Artist"
+      },
+      {
+        "id" : "/en/electric_guitar",
+        "link" : "/music/artist/instruments_played",
+        "name" : "Electric guitar"
+      },
+      {
+        "id" : "/en/drum",
+        "link" : "/music/artist/instruments_played",
+        "name" : "Drum"
+      },
+      {
+        "id" : "/en/universal_music_group",
+        "link" : "/music/artist/label",
+        "name" : "Universal Music Group"
+      },
+      {
+        "id" : "/award/award_winner",
+        "link" : "/type/object/type",
+        "name" : "Award Winner"
+      },
+      {
+        "id" : "/en/pop_rock",
+        "link" : "/music/artist/genre",
+        "name" : "Pop rock"
+      }
+    ],
+    "/type/reflect/any_reverse" : [
+      {
+        "id" : "/en/outlandos_damour",
+        "link" : "/music/album/artist",
+        "name" : "Outlandos d'Amour"
+      },
+      {
+        "id" : "/en/reggatta_de_blanc",
+        "link" : "/music/album/artist",
+        "name" : "Reggatta de Blanc"
+      },
+      {
+        "id" : "/en/zenyatta_mondatta",
+        "link" : "/music/album/artist",
+        "name" : "Zenyatta Mondatta"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000017dab4",
+        "link" : "/music/album/artist",
+        "name" : "Ghost in the Machine"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000002f9e349",
+        "link" : "/music/album/artist",
+        "name" : "Synchronicity"
+      },
+      {
+        "id" : "/en/every_breath_you_take_the_singles",
+        "link" : "/music/album/artist",
+        "name" : "Every Breath You Take: The Singles"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000002f9e3ca",
+        "link" : "/music/album/artist",
+        "name" : "Greatest Hits"
+      },
+      {
+        "id" : "/en/message_in_a_box_the_complete_recordings",
+        "link" : "/music/album/artist",
+        "name" : "Message in a Box: The Complete Recordings"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000002f9e2df",
+        "link" : "/music/album/artist",
+        "name" : "Live!"
+      },
+      {
+        "id" : "/en/every_breath_you_take_the_classics",
+        "link" : "/music/album/artist",
+        "name" : "Every Breath You Take: The Classics"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000002f9e3a7",
+        "link" : "/music/album/artist",
+        "name" : "Their Greatest Hits"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000002f9e2cf",
+        "link" : "/music/album/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/en/roxanne_97_puff_daddy_remix",
+        "link" : "/music/album/artist",
+        "name" : "Roxanne '97 (Puff Daddy remix)"
+      },
+      {
+        "id" : "/en/roxanne_97",
+        "link" : "/music/album/artist",
+        "name" : "Roxanne '97"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128acd5",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128acdc",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128acea",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128acf8",
+        "link" : "/music/track/artist",
+        "name" : "Walking on the Moon"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128ad0d",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128ad14",
+        "link" : "/music/track/artist",
+        "name" : "De Do Do Do, De Da Da Da"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128ad3e",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128ad45",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000128ad4c",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne '97 (Puff Daddy remix)"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012dba61",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012dde95",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012dde9c",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012ddeaa",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012ddeb1",
+        "link" : "/music/track/artist",
+        "name" : "Walking on The Moon"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012ddebf",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012ddee9",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012ddef0",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000012ddef7",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne '97 (Puff Daddy remix)"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a15",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a1c",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a2a",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a38",
+        "link" : "/music/track/artist",
+        "name" : "Walking on the Moon"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a4d",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a54",
+        "link" : "/music/track/artist",
+        "name" : "De Do Do Do, De Da Da Da"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a7e",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001338a85",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001423459",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001474145",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000147414c",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000147415a",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001474168",
+        "link" : "/music/track/artist",
+        "name" : "Walking on the Moon"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000147417d",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001474184",
+        "link" : "/music/track/artist",
+        "name" : "De Do Do Do, De Da Da Da"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000014741ae",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000014741b5",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000014741bc",
+        "link" : "/music/track/artist",
+        "name" : "So Lonely"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001477682",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000014c6e37",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001555d7d",
+        "link" : "/music/track/artist",
+        "name" : "Walking on the Moon"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001594b89",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001594b90",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001594b9e",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001594bac",
+        "link" : "/music/track/artist",
+        "name" : "Walking on the Moon"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001594bc1",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001594bc8",
+        "link" : "/music/track/artist",
+        "name" : "De Do Do Do De Da Da Da"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000015de479",
+        "link" : "/music/track/artist",
+        "name" : "Driven to Tears"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000016088e7",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000163c1eb",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000166c542",
+        "link" : "/music/track/artist",
+        "name" : "So Lonely"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000166ddfa",
+        "link" : "/music/track/artist",
+        "name" : "Synchronicity II"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000016a7432",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000016f672b",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000170d706",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000017c7193",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000017f93ec",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000187d519",
+        "link" : "/music/track/artist",
+        "name" : "De Do Do"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000018b6033",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000018dc967",
+        "link" : "/music/track/artist",
+        "name" : "Don't Stand So Close to Me"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000196011e",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000019ad096",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001a3fbb1",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001a51770",
+        "link" : "/music/track/artist",
+        "name" : "Driven to Tears"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001a6f0e0",
+        "link" : "/music/track/artist",
+        "name" : "How Stupid Mr. Bates"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001a6f0ee",
+        "link" : "/music/track/artist",
+        "name" : "I Burn For You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001a6f118",
+        "link" : "/music/track/artist",
+        "name" : "A Kind of Loving"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001b3c3b5",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001b4384d",
+        "link" : "/music/track/artist",
+        "name" : "Nothing Achieving"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001b8d03f",
+        "link" : "/music/track/artist",
+        "name" : "Roxanne"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001bbfa9a",
+        "link" : "/music/track/artist",
+        "name" : "Fall Out"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001bf6fa1",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001d17cc8",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001d17e96",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001d2d0b8",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001d80ea3",
+        "link" : "/music/track/artist",
+        "name" : "King of Pain"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001d93d32",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001e3eb1f",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001ee5178",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001f5a4ad",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001f835c3",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000001ff4227",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000200cc5e",
+        "link" : "/music/track/artist",
+        "name" : "Every Little Thing She Does Is Magic"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f8000000002041324",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f800000000206f5f8",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000021147c7",
+        "link" : "/music/track/artist",
+        "name" : "Message in a Bottle"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000021147ce",
+        "link" : "/music/track/artist",
+        "name" : "Can't Stand Losing You"
+      },
+      {
+        "id" : "/guid/9202a8c04000641f80000000021147dc",
+        "link" : "/music/track/artist",
+        "name" : "Every Breath You Take"
+      }
+    ],
+    "/type/reflect/any_value" : [
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "ポリス (バンド)"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/music/artist/active_start",
+        "value" : "1977-01"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "הפוליס"
+      },
+      {
+        "link" : "/common/topic/alias",
+        "value" : "Sting &amp; The Police"
+      },
+      {
+        "link" : "/type/object/name",
+        "value" : "เดอะ โพลิซ"
+      },
+      {
+        "link" : "/music/artist/active_end",
+        "value" : "1986"
+      }
+    ],
+    "id" : "/en/the_police"
+  }
+}

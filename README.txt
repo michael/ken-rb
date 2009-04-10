@@ -1,26 +1,54 @@
-= Mql
+= Ken
 
 * http://www.github.com/michael/ken
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Ken is a Data Layer for Knowledge Representation.
+
+It's being built to access the Metaweb Services supplied by Freebase.com.
+Just born, the project’s goals are the provision of a concise API for querying and writing.
+Therefore it wraps the Metaweb Architecture to smart Ruby Objects (that represent the Metaweb Architecture).
+
+You can navigate the Freebase Graph using a rubyish syntax.
+
+You should be able to use this Library as a Data Layer (instead of or in addition to 
+ActiveRecord/DataMapper) for your Web Framework of choice (Merb, Rails).
+
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+Features
+
+* Fetching of single Resources
+* Type inspection
+* Attributes inspection
+* Views on Resources to group Attributes based on the Resource's types
+* Some specs
+
+Roadmap
+
+1. Much more specs
+2. Support for querying of multiple Resources
+3. Better Type Support
+4. API for Set Based Browsing (see http://mqlx.com/~david/parallax/)
+5. Accessing Properties/Attributes directly (e.g. resource.genres )
+6. Write-Support
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+resource = Ken.get('/en/new_order') # => <Resource id="/en/new_order" name="New Order">
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+- Ruby >=1.8.x
+- RubyGems >=1.2.x
+- Extlib >=0.9.x
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+$ gem sources -a http://gems.github.com (you only have to do this once)
+$ sudo gem install michael-ken
 
 == LICENSE:
 

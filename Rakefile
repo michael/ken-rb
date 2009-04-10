@@ -11,7 +11,7 @@ require ROOT + 'lib/ken/version'
 AUTHOR           = 'Michael Aufreiter'
 EMAIL            = 'ma[at]zive[dot]at'
 GEM_NAME         = 'ken'
-GEM_VERSION      = '0.0.1'# Ken::VERSION
+GEM_VERSION      = '0.0.2'# Ken::VERSION
 GEM_DEPENDENCIES = [
   [ 'extlib', '>=0.9.10'     ]
   # [ 'addressable', '~>2.0.1' ]

@@ -1,0 +1,102 @@
+{
+  "id" : "/music/artist",
+  "name" : "Musical Artist",
+  "properties" : [
+    {
+      "expected_type" : "/location/location",
+      "id" : "/music/artist/origin",
+      "name" : "Place Musical Career Began",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/type/datetime",
+      "id" : "/music/artist/active_start",
+      "name" : "Active as Musical Artist (start)",
+      "unique" : true
+    },
+    {
+      "expected_type" : "/type/datetime",
+      "id" : "/music/artist/active_end",
+      "name" : "Active as Musical Artist (end)",
+      "unique" : true
+    },
+    {
+      "expected_type" : "/music/genre",
+      "id" : "/music/artist/genre",
+      "name" : "Musical Genres",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/record_label",
+      "id" : "/music/artist/label",
+      "name" : "Record Labels",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/artist",
+      "id" : "/music/artist/similar_artist",
+      "name" : "Similar Artists",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/common/webpage",
+      "id" : "/music/artist/home_page",
+      "name" : "Musical Artist Home Page",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/common/webpage",
+      "id" : "/music/artist/acquire_webpage",
+      "name" : "Web Page for Music",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/album",
+      "id" : "/music/artist/album",
+      "name" : "Albums",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/recording_contribution",
+      "id" : "/music/artist/contribution",
+      "name" : "Album Contributions",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/track",
+      "id" : "/music/artist/track",
+      "name" : "Tracks Recorded",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/artist",
+      "id" : "/music/artist/artist_similar",
+      "name" : "Similar Musical Artists",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/track_contribution",
+      "id" : "/music/artist/track_contributions",
+      "name" : "Track Contributions",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/instrument",
+      "id" : "/music/artist/instruments_played",
+      "name" : "Instruments Played",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/voice",
+      "id" : "/music/artist/vocal_range",
+      "name" : "Vocal Range",
+      "unique" : null
+    },
+    {
+      "expected_type" : "/music/concert_tour",
+      "id" : "/music/artist/concert_tours",
+      "name" : "Concert Tours",
+      "unique" : false
+    }
+  ]
+}

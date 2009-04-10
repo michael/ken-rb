@@ -1,9 +1,7 @@
 require 'pathname'
-
-require Pathname(__FILE__).dirname.expand_path + 'spec_helper'
+require Pathname(__FILE__).dirname.expand_path.parent + 'spec_helper'
 
 describe Ken::Session do
-
   before :all do
     Ken::Logger.new(STDOUT, :info)
     Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')

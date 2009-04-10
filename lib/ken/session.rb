@@ -16,7 +16,6 @@ module Ken
     end
   end
   
-  
   # partially taken from chris eppstein's freebase api
   # http://github.com/chriseppstein/freebase/tree
   class Session
@@ -85,7 +84,6 @@ module Ken
       
       # will always return the converted ruby hash (from json)
       inner['result']
-      
     end # mqlread
 
     protected

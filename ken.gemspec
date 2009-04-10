@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{ken}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
  
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Aufreiter"]
@@ -8,7 +8,15 @@ Gem::Specification.new do |s|
   s.description = %q{Ruby API for accessing Freebase}
   s.email = ["ma [a] zive [d] at"]
   s.extra_rdoc_files = ["README.txt", "LICENSE", "TODO", "History.txt"]
-  s.files = [".gitignore", "History.txt", "LICENSE", "Manifest.txt", "README.txt", "Rakefile", "TODO", "ken.gemspec", "lib/ken.rb", "lib/ken/collection.rb", "lib/ken/logger.rb", "lib/ken/property.rb", "lib/ken/resource.rb", "lib/ken/session.rb", "lib/ken/type.rb", "lib/ken/version.rb", "spec/mql_spec.rb", "spec/property_spec.rb", "spec/resource_spec.rb", "spec/session_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "tasks/hoe.rb", "tasks/install.rb", "tasks/spec.rb"]
+  s.files = ["History.txt", "LICENSE", "Manifest.txt", "README.txt",
+             "README.textile", "Rakefile", "TODO", "examples/ken.rb", 
+             "lib/ken.rb", "lib/ken/attribute.rb", "lib/ken/collection.rb", "lib/ken/logger.rb",
+             "lib/ken/property.rb", "lib/ken/resource.rb", "lib/ken/session.rb", "lib/ken/type.rb",
+             "lib/ken/util.rb", "lib/ken/version.rb", "lib/ken/view.rb", "spec/unit/attribute_spec.rb",
+             "spec/unit/property_spec.rb", "spec/unit/resource_spec.rb", "spec/unit/session_spec.rb",
+             "spec/unit/type_spec.rb", "spec/unit/view_spec.rb", "spec/integration/ken_spec.rb", 
+             "spec/fixtures/music_artist.json", "spec/fixtures/the_police.json", "spec/spec.opts",
+             "spec/spec_helper.rb", "tasks/hoe.rb", "tasks/install.rb", "tasks/spec.rb", "tasks/gemspec.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/michael/ken}
   s.rdoc_options = ["--main", "README.txt"]

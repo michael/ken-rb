@@ -1,27 +1,173 @@
-Please check the wiki first to get an idea what this project is about "http://wiki.github.com/michael/ken":http://wiki.github.com/michael/ken.
+h1. Ken
 
-h1. Short demo of very basic initial functionality
+h2. Introduction
+
+Ken is a Data Layer for Knowledge Representation.
+
+It's being built to access the Metaweb Services supplied by Freebase.com.
+Just born, the project’s goals are the provision of a concise API for querying and writing.
+Therefore it wraps the Metaweb Architecture to smart Ruby Objects (that represent the Metaweb Architecture).
+
+You can navigate the Freebase Graph using a rubyish syntax.
+
+You should be able to use this Library as a Data Layer (instead of or in addition to 
+ActiveRecord/DataMapper) for your Web Framework of choice (Merb, Rails).
+
+
+h2. Installation
+
+Use GitHub RubyGems.
 
 <pre>
 <code>
-  # fetch a resource
-  artist = Ken.get('/en/the_rolling_stones')
-
-  # let's inspect that resource
-  artist.types.each do |type|
-    puts ""
-    puts type.name
-    puts "=================================================="
-    type.properties.each do |prop|
-      puts prop.name
-      # soon you will also be able to fetch attribute values by simply calling
-      # -> artist.read_attribute(prop.id)
-      # or if you already know which attribute you want to fetch
-      # -> artist.<attributename> e.g. artist.origin
-    end
-    puts
-  end
-
-  puts artist.read_attribute('origin')
+  $ gem sources -a http://gems.github.com (you only have to do this once)
+  $ sudo gem install michael-ken
 </code>
 </pre>
+
+Or even better, stay on The Edge.
+  
+
+h2. Getting started
+
+The first place to get started with Freebase is of course, Freebase. Try out their Browser at 
+"http://www.freebase.com":http://www.freebase.com.
+
+The Freebase Database can be thought of as a huge graph of interconnected nodes that represent 
+knowledge (in a much more structured way than wikipedia does).
+That graph can be viewed at a higher level through an object-oriented lens which leads to easier interaction.
+To understand the fundamental Metaweb Architecture please read the official
+"MQL Reference guide":http://download.freebase.com/MQLReferenceGuide.pdf (with focus on Chapter 2)
+provided by Freebase.
+
+In addition, you can learn a lot by employing the Freebase "Query Editor":http://www.freebase.com/tools/queryeditor/.
+
+h3. Fetching a Resource
+
+Let's ask Ken what he knows about the British Band New Order.
+
+<pre>
+<code>
+  resource = Ken.get('/en/new_order') # => <Resource id="/en/new_order" name="New Order">
+</code>
+</pre>
+
+h3. Inspecting the types
+
+Every Resource can have multiple types.
+
+<pre>
+<code>
+  resource.types
+  # => [ #<Type id="/film/music_contributor" name="Film music contributor">, #<Type id="/music/artist" name="Musical Artist">, 
+         #<Type id="/common/topic" name="Topic">, #<Type id="/music/musical_group" name="Musical Group">,
+         #<Type id="/broadcast/artist" name="Broadcast Artist">, #<Type id="/music/group_member" name="Musical Group Member"> ]
+</code>
+</pre>
+
+We can see that New Order is a member of Music Artist, Film Music Contributor, Broadcast Artist and other types.
+
+h3. Inspecting a types properties
+
+A type defines a set of properties to describe a Resource.
+
+<pre>
+<code>
+  resource.types.each do |type|
+    type.properties # => e.g. [ #<Property id="/music/musical_group/member"> ]
+  end
+</code>
+</pre>
+
+We get sets of Properties for each Type. The Type Musical Group has just one Property @/music/musical_group/member@
+named Members Of Musical Group.
+
+h4. Listing all Attributes
+
+After inspecting a Resource's Types and Properties we now know what we could know. But actually we don't know nothing :)
+So it's time to ask for the values of properties, the so called _Attributes_.
+
+~Note: In Ken's terminology we differ between _Properties_ and concrete Property instances, the _Attributes_, while
+Freebase itself doesn't.~ 
+
+<pre>
+<code>
+  resource.attributes.each do |att|
+    att # => e.g. #<Attribute property="/music/artist/album">
+    att.property.name # => e.g. "Albums"
+    
+    att.values
+    # e.g. => [ #<Resource id="/guid/9202a8c04000641f8000000002fa2556" name="Ceremony">, 
+                #<Resource id="/guid/9202a8c04000641f8000000002fa24d5" name="Procession">,
+                #<Resource id="/guid/9202a8c04000641f8000000002fa20d3" name="Everything's Gone Green">, ... ]
+    # e.g. => ["1980"]
+  end
+</code>
+</pre>
+
+Attributes are slightly more complicated to handle compared to Types and Properties.
+
+There are four kinds of Attributes.
+  * Unique Value Type
+  * Unique Object Type
+  * Non-unique Value Type
+  * Non-unique Object
+  
+In order to be able to use unique and non-unique Attributes in the same manner we always wrap the value of an Attribute
+in a Collection, no matter if there's one value or there are many.
+
+h4. Group Attributes by their Type using Views
+
+
+<pre>
+<code>
+  resource.views.each do |view|
+    view # => e.g. #<View type="/music/artist">
+    view.type # => e.g #<Type id="/music/artist" name="Musical Artist">
+    view.attributes
+    # => [#<Attribute property="/music/artist/home_page">, #<Attribute property="/music/artist/genre">,
+          #<Attribute property="/music/artist/active_start">, #<Attribute property="/music/artist/similar_artist">,
+          #<Attribute property="/music/artist/album">, #<Attribute property="/music/artist/label">,
+          #<Attribute property="/music/artist/track">, #<Attribute property="/music/artist/origin">]
+            
+    view.attributes.each do |att|
+      att.values
+      # e.g. => [ #<Resource id="/en/alternative_dance" name="Alternative dance">,
+                  #<Resource id="/en/synthpop" name="Synthpop">, 
+                  #<Resource id="/en/house_music" name="House music">,
+                  #<Resource id="/en/post-punk" name="Post-punk"> ]
+      # e.g. => ["1980"]
+    end
+  end
+</code>
+</pre>
+
+h2. Status
+
+Currently, the focus lies on inspecting Freebase Resources in a generic way. That's why
+there is no support for accessing Properties or Attributes directly when you know them already.
+That keeps me focussed and prevents me from adding too much sugar.
+
+Therefore I would say that the first application using Ken will definitely be a Browser Application. :)
+
+If you rather want to query based on Types and access Properties/Attributes directly you should consider using
+Chris "Eppsteins Freebase Library":http://github.com/chriseppstein/freebase/tree/master instead. 
+
+h3. Features
+
+* Fetching of single Resources
+* Type inspection
+* Attributes inspection
+* Views on Resources to group Attributes based on the Resource's types
+* Some specs
+
+h3. Roadmap
+
+# Much more specs
+# Support for querying of multiple Resources
+# Better Type Support
+# API for Set Based Browsing (see http://mqlx.com/~david/parallax/)
+# Accessing Properties/Attributes directly (e.g. resource.genres )
+# Write-Support
+
+Initial thoughts, obviously not up-to-date and not conforming to the current version, are available at "http://wiki.github.com/michael/ken":http://wiki.github.com/michael/ken.

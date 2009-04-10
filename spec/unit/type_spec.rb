@@ -1,6 +1,6 @@
 require 'pathname'
 
-require Pathname(__FILE__).dirname.expand_path + 'spec_helper'
+require Pathname(__FILE__).dirname.expand_path.parent + 'spec_helper'
 
 describe Ken::Type do
   before :all do

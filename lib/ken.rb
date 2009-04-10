@@ -8,9 +8,12 @@ require 'addressable/uri'
 dir = Pathname(__FILE__).dirname.expand_path + 'ken'
 
 require dir + 'version'
+require dir + 'util'
 require dir + 'resource'
 require dir + 'type'
+require dir + 'view'
 require dir + 'property'
+require dir + 'attribute'
 require dir + 'collection'
 require dir + 'session'
 require dir + 'logger'
@@ -18,13 +21,22 @@ require dir + 'logger'
 # init logger as soon as the library is required
 Ken::Logger.new(STDOUT, :error)
 
+# init default session
+Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
 
 module Ken
   def self.all(options = {})
-    #raise ArgumentError.new("must be a hash") unless options.is_a(::Hash)
+    # raise ArgumentError.new("must be a hash") unless options.is_a(::Hash)
     raise NotImplementedError
   end
   
+  
+  # Executes an Mql Query against the Freebase API and returns the result wrapped
+  # in a <tt>Resource</tt> Object.
+  #
+  # == Examples
+  #
+  #  Ken.get('/en/the_police') => #<Resource id="/en/the_police" name="The Police">
   def self.get(id)
     # TODO check if it has a correct /type/object/id syntax
     raise ArgumentError.new("must be a string") unless id.is_a?(::String)
@@ -38,7 +50,10 @@ module Ken
         :properties => [{
           :id => nil,
           :name => nil,
-          :expected_type => nil
+          :expected_type => nil,
+          :unique => nil,
+          :reverse_property => nil,
+          :master_property => nil,
         }]
       }]
     }
