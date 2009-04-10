@@ -6,11 +6,11 @@ Ken is a Data Layer for Knowledge Representation.
 
 It's being built to access the Metaweb Services supplied by Freebase.com.
 Just born, the project’s goals are the provision of a concise API for querying and writing.
-Therefore it wraps the Metaweb Architecture to smart Ruby Objects (that represent the Metaweb Architecture).
+Therefore it wraps the Metaweb Architecture to smart Ruby Objects.
 
 You can navigate the Freebase Graph using a rubyish syntax.
 
-You should be able to use this Library as a Data Layer (instead of or in addition to 
+If things go right, you should be able to use this library as a Data Layer (instead of or in addition to 
 ActiveRecord/DataMapper) for your Web Framework of choice (Merb, Rails).
 
 
@@ -52,7 +52,7 @@ Let's ask Ken what he knows about the British Band New Order.
 </code>
 </pre>
 
-h3. Inspecting the types
+h3. Inspecting the Types
 
 Every Resource can have multiple types.
 
@@ -67,7 +67,7 @@ Every Resource can have multiple types.
 
 We can see that New Order is a member of Music Artist, Film Music Contributor, Broadcast Artist and other types.
 
-h3. Inspecting a types properties
+h3. Inspecting a Type's properties
 
 A type defines a set of properties to describe a Resource.
 
@@ -82,7 +82,7 @@ A type defines a set of properties to describe a Resource.
 We get sets of Properties for each Type. The Type Musical Group has just one Property @/music/musical_group/member@
 named Members Of Musical Group.
 
-h4. Listing all Attributes
+h3. Listing all Attributes
 
 After inspecting a Resource's Types and Properties we now know what we could know. But actually we don't know nothing :)
 So it's time to ask for the values of properties, the so called _Attributes_.
@@ -116,7 +116,7 @@ There are four kinds of Attributes.
 In order to be able to use unique and non-unique Attributes in the same manner we always wrap the value of an Attribute
 in a Collection, no matter if there's one value or there are many.
 
-h4. Group Attributes by their Type using Views
+h3. Group Attributes by their Type using Views
 
 
 <pre>
