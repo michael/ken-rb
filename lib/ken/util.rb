@@ -9,6 +9,7 @@ module Ken
           result[item["link"]] = []
           result[item["link"]] << { "id" => item["id"], "name" => item["name"], "value" => item["value"] }
         end
+        result
       end
     end
     module_function :convert_hash

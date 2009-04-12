@@ -3,6 +3,7 @@ require 'rubygems'
 require 'net/http'
 require 'json'
 require 'extlib'
+require 'extlib/assertions'
 require 'addressable/uri'
 
 dir = Pathname(__FILE__).dirname.expand_path + 'ken'

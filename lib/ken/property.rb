@@ -1,6 +1,8 @@
 module Ken
   class Property
     
+    include Extlib::Assertions
+    
     VALUE_TYPES = %w{
      /type/id
      /type/int
@@ -16,7 +18,7 @@ module Ken
     # initializes a resource by json result
     def initialize(data, type)
       assert_kind_of 'data', data, Hash
-      assert_kind_of 'type', type, String
+      assert_kind_of 'type', type, Ken::Type
       @data, @type = data, type
     end
     
@@ -67,13 +69,13 @@ module Ken
     # returns true if the property is an object type
     # @api public
     def object_type?
-      !VALUE_TYPES.include?(expected_type)
+      !value_type?
     end
     
     # returns true if the property is a value type
     # @api public
     def value_type?
-      !object_type?
+      VALUE_TYPES.include?(expected_type)
     end
     
     # @api public

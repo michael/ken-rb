@@ -1,5 +1,8 @@
 module Ken
   class Attribute
+    
+    include Extlib::Assertions
+    
     attr_reader :property
     
     # initializes a resource by json result

@@ -1,6 +1,8 @@
 module Ken
   class Type
     
+    include Extlib::Assertions
+    
     # initializes a resource by json result
     def initialize(data)
       assert_kind_of 'data', data, Hash

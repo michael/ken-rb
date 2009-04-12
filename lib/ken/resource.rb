@@ -1,6 +1,8 @@
 module Ken
   class Resource
     
+    include Extlib::Assertions
+    
     FETCH_SCHEMA_QUERY = {
       # :id => id, # needs to be merge!d in instance method
       :name => nil,

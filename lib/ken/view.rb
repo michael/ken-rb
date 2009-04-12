@@ -1,7 +1,10 @@
 # provides an interface to view a resource as a specific type
 # provides an interface for working with attributes, properties
 module Ken
-  class View    
+  class View
+    
+    include Extlib::Assertions
+    
     # initializes a resource by json result
     def initialize(resource, type)
       assert_kind_of 'resource', resource, Ken::Resource
