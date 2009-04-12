@@ -15,9 +15,9 @@ module Ken
     
     # initializes a resource by json result
     def initialize(data, type)
-      raise "error" unless data.kind_of?(Hash)
-      @data = data
-      @type = type
+      assert_kind_of 'data', data, Hash
+      assert_kind_of 'type', type, String
+      @data, @type = data, type
       self
     end
     

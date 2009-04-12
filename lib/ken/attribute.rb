@@ -4,8 +4,7 @@ module Ken
     
     # initializes a resource by json result
     def initialize(data, property)
-      raise "error" unless data.kind_of?(Array)
-      
+      assert_kind_of 'data', data, Array
       @data = data
       @property = property # belongs to a property
       self

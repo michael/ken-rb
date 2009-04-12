@@ -4,11 +4,10 @@ module Ken
   class View    
     # initializes a resource by json result
     def initialize(resource, type)
-      raise "error" unless resource.kind_of?(Ken::Resource)
-      raise "error" unless type.kind_of?(Ken::Type)
-      
+      assert_kind_of 'resource', resource, Ken::Resource
+      assert_kind_of 'type', type, Ken::Type
       @resource = resource # belongs to a resource
-      @type = type # belongs to a type
+      @type = type         # belongs to a type
       self
     end
     

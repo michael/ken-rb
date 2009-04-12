@@ -3,8 +3,7 @@ module Ken
     
     # initializes a resource by json result
     def initialize(data)
-      raise "error" unless data.kind_of?(Hash)
-      
+      assert_kind_of 'data', data, Hash
       @data = data
       self
     end

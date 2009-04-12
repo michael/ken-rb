@@ -46,14 +46,9 @@ module Ken
     
     # initializes a resource by json result
     def initialize(data)
-      return nil unless data
-      raise "error" unless data.kind_of?(Hash)
-      
+      assert_kind_of 'data', data, Hash
       # intialize lazy if there is no type supplied
-      @schema_loaded = false
-      @attributes_loaded = false
-      @data = data
-      
+      @schema_loaded, @attributes_loaded, @data = false, false, data
       self
     end
     
