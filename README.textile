@@ -158,6 +158,11 @@ Keep in mind that only the top level of the query is mapped to a Collection of R
 So asking for values in a nested level does not make sense. Use nested statements just for
 lowering the top level result.
 
+However you can instead navigate the normal way to figure out that values.
+_But won't that require another query to triggered? Doubtful._
+
+Let's look at some nested query:
+
 <pre>
 <code>
   query = {
