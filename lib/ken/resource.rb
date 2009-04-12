@@ -13,97 +13,6 @@ module Ken
       self
     end
     
-    def schema_loaded?
-      @schema_loaded
-    end
-    
-    def attributes_loaded?
-      @attributes_loaded
-    end
-    
-    def fetch_attributes
-      # fetching all objects regardless of the type
-      # check this http://lists.freebase.com/pipermail/developers/2007-December/001022.html
-      
-      query = {
-        :"/type/reflect/any_master" => [
-          {
-            :id => nil,
-            :link => nil,
-            :name => nil
-          }
-        ],
-        :"/type/reflect/any_reverse" => [
-          {
-            :id => nil,
-            :link => nil,
-            :name => nil
-          }
-        ],
-        :"/type/reflect/any_value" => [
-          {
-            :link => nil,
-            :value => nil
-            # :lang => "/lang/en",
-            # :type => "/type/text"
-          }
-        ],
-        :id => id
-      }
-      
-      Ken.session.mqlread(query)
-    end
-    
-    def load_attributes!
-      data = @data["attribute"] || fetch_attributes
-      
-      # master & value attributes
-      raw_attributes = Ken::Util.convert_hash(data["/type/reflect/any_master"])
-      raw_attributes.merge!(Ken::Util.convert_hash(data["/type/reflect/any_value"]))
-      @attributes = {}
-      raw_attributes.each_pair do |a, d|
-        properties.select { |p| p.id == a}.each do |p|
-          @attributes[p.id] = Ken::Attribute.create(d, p)
-        end
-      end
-      
-      # reverse properties
-      raw_attributes = Ken::Util.convert_hash(data["/type/reflect/any_reverse"])
-      raw_attributes.each_pair do |a, d|
-        properties.select { |p| p.master_property == a}.each do |p|
-          @attributes[p.id] = Ken::Attribute.create(d, p)
-        end
-      end
-      
-      @attributes_loaded = true
-    end
-    
-    def fetch_schema
-      query = {
-        :id => id,
-        :name => nil,
-        :type => [{
-          :id => nil,
-          :name => nil,
-          :properties => [{
-            :id => nil,
-            :name => nil,
-            :expected_type => nil,
-            :unique => nil
-          }]
-        }]
-      }
-      
-      Ken.session.mqlread(query)["type"]
-    end
-    
-    # loads the resources metainfo
-    def load_schema!
-      @data["type"] ||= fetch_schema
-      @types = Ken::Collection.new(@data["type"].map { |type| Ken::Type.new(type) })
-      @schema_loaded = true
-    end
-    
     # @api public
     def id
       @data["id"] || ""
@@ -153,6 +62,104 @@ module Ken
       load_attributes! unless attributes_loaded?
       @attributes.values
     end
+    
+    # returns true if type information is already loaded
+    # @api public
+    def schema_loaded?
+      @schema_loaded
+    end
+    
+    # returns true if attributes are already loaded
+    # @api public
+    def attributes_loaded?
+      @attributes_loaded
+    end
+    
+    private
+    def fetch_attributes
+      # fetching all objects regardless of the type
+      # check this http://lists.freebase.com/pipermail/developers/2007-December/001022.html
+      
+      query = {
+        :"/type/reflect/any_master" => [
+          {
+            :id => nil,
+            :link => nil,
+            :name => nil
+          }
+        ],
+        :"/type/reflect/any_reverse" => [
+          {
+            :id => nil,
+            :link => nil,
+            :name => nil
+          }
+        ],
+        :"/type/reflect/any_value" => [
+          {
+            :link => nil,
+            :value => nil
+            # :lang => "/lang/en",
+            # :type => "/type/text"
+          }
+        ],
+        :id => id
+      }
+      
+      Ken.session.mqlread(query)
+    end
+    
+    def load_attributes!
+      data = @data["ken:attribute"] || fetch_attributes
+      
+      # master & value attributes
+      raw_attributes = Ken::Util.convert_hash(data["/type/reflect/any_master"])
+      raw_attributes.merge!(Ken::Util.convert_hash(data["/type/reflect/any_value"]))
+      @attributes = {}
+      raw_attributes.each_pair do |a, d|
+        properties.select { |p| p.id == a}.each do |p|
+          @attributes[p.id] = Ken::Attribute.create(d, p)
+        end
+      end
+      
+      # reverse properties
+      raw_attributes = Ken::Util.convert_hash(data["/type/reflect/any_reverse"])
+      raw_attributes.each_pair do |a, d|
+        properties.select { |p| p.master_property == a}.each do |p|
+          @attributes[p.id] = Ken::Attribute.create(d, p)
+        end
+      end
+      
+      @attributes_loaded = true
+    end
+    
+    def fetch_schema
+      query = {
+        :id => id,
+        :name => nil,
+        :"ken:type" => [{
+          :id => nil,
+          :name => nil,
+          :properties => [{
+            :id => nil,
+            :name => nil,
+            :expected_type => nil,
+            :unique => nil
+          }]
+        }]
+      }
+      
+      Ken.session.mqlread(query)["ken:type"]
+    end
+    
+    # loads the resources metainfo
+    # @api private
+    def load_schema!
+      @data["ken:type"] ||= fetch_schema
+      @types = Ken::Collection.new(@data["ken:type"].map { |type| Ken::Type.new(type) })
+      @schema_loaded = true
+    end
+    
 
   end # class Resource
 end # module Ken

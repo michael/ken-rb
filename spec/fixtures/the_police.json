@@ -1,7 +1,7 @@
 {
   "id" : "/en/the_police",
   "name" : "The Police",
-  "type" : [
+  "ken:type" : [
     {
       "id" : "/music/artist",
       "name" : "Musical Artist",
@@ -189,7 +189,7 @@
       ]
     }
   ],
-  "attribute" : {
+  "ken:attribute" : {
     "/type/reflect/any_master" : [
       {
         "id" : "/boot/all_permission",

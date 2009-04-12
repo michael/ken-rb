@@ -56,7 +56,13 @@ module Ken
     # returns true if the property is an object type
     # @api public
     def object_type?
-      !%w{
+      !value_type?
+    end
+    
+    # returns true if the property is a value type
+    # @api public
+    def value_type?
+      %w{
          /type/id
          /type/int
          /type/float
@@ -67,12 +73,6 @@ module Ken
          /type/datetime
          /type/key
         }.include?(expected_type)
-    end
-    
-    # returns true if the property is a value type
-    # @api public
-    def value_type?
-      !object_type?
     end
     
     # @api public

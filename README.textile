@@ -142,6 +142,41 @@ h3. Group Attributes by their Type using Views
 </code>
 </pre>
 
+h3. Fetching multiple Resources using a query
+
+As of now you can ask for multiple Resources by specifying a query.
+
+<pre>
+<code>
+  resources = Ken.all(:name => "Apple", :type => "/music/album")
+  # => [#<Resource id="/guid/9202a8c04000641f80000000031dae7c" name="Apple">,
+        #<Resource id="/guid/9202a8c04000641f8000000007ce31ec" name="Apple">]
+</code>
+</pre>
+
+Keep in mind that only the top level of the query is mapped to a Collection of Resource Objects.
+So asking for values in a nested level does not make sense. Use nested statements just for
+lowering the top level result.
+
+<pre>
+<code>
+  query = {
+    :directed_by => "George Lucas",
+    :starring => [
+      {
+        :actor => "Harrison Ford"
+      }
+    ],
+    :type => "/film/film"
+  }
+  
+  resources = Ken.all(query)
+  # => [#<Resource id="/en/star_wars_episode_iv_a_new_hope" name="Star Wars Episode IV: A New Hope">,
+        #<Resource id="/en/american_graffiti" name="American Graffiti">,
+        #<Resource id="/en/the_star_wars_holiday_special" name="The Star Wars Holiday Special">]
+</code>
+</pre>
+
 h2. Status
 
 Currently, the focus lies on inspecting Freebase Resources in a generic way. That's why
@@ -156,6 +191,7 @@ Chris "Eppsteins Freebase Library":http://github.com/chriseppstein/freebase/tree
 h3. Features
 
 * Fetching of single Resources
+* Fetching of multiple Resources by specifying a query
 * Type inspection
 * Attributes inspection
 * Views on Resources to group Attributes based on the Resource's types
@@ -164,7 +200,6 @@ h3. Features
 h3. Roadmap
 
 # Much more specs
-# Support for querying of multiple Resources
 # Better Type Support
 # API for Set Based Browsing (see http://mqlx.com/~david/parallax/)
 # Accessing Properties/Attributes directly (e.g. resource.genres )
