@@ -1,6 +1,18 @@
 module Ken
   class Property
     
+    VALUE_TYPES = %w{
+     /type/id
+     /type/int
+     /type/float
+     /type/boolean
+     /type/text
+     /type/rawstring
+     /type/uri
+     /type/datetime
+     /type/key
+    }
+    
     # initializes a resource by json result
     def initialize(data, type)
       raise "error" unless data.kind_of?(Hash)
@@ -56,17 +68,7 @@ module Ken
     # returns true if the property is an object type
     # @api public
     def object_type?
-      !%w{
-         /type/id
-         /type/int
-         /type/float
-         /type/boolean
-         /type/text
-         /type/rawstring
-         /type/uri
-         /type/datetime
-         /type/key
-        }.include?(expected_type)
+      !VALUE_TYPES.include?(expected_type)
     end
     
     # returns true if the property is a value type

@@ -1,5 +1,49 @@
 module Ken
   class Resource
+    
+    FETCH_SCHEMA_QUERY = {
+      # :id => id, # needs to be merge!d in instance method
+      :name => nil,
+      :type => [{
+        :id => nil,
+        :name => nil,
+        :properties => [{
+          :id => nil,
+          :name => nil,
+          :expected_type => nil,
+          :unique => nil
+        }]
+      }]
+    }
+    
+    FETCH_ATTRIBUTES_QUERY = {
+      :"/type/reflect/any_master" => [
+        {
+          :id => nil,
+          :link => nil,
+          :name => nil
+        }
+      ],
+      :"/type/reflect/any_reverse" => [
+        {
+          :id => nil,
+          :link => nil,
+          :name => nil
+        }
+      ],
+      :"/type/reflect/any_value" => [
+        {
+          :link => nil,
+          :value => nil
+          # :lang => "/lang/en",
+          # :type => "/type/text"
+        }
+      ],
+      
+      # :id => id # needs to be merge!d in instance method
+    }
+    
+    
     # initializes a resource by json result
     def initialize(data)
       return nil unless data
@@ -24,34 +68,7 @@ module Ken
     def fetch_attributes
       # fetching all objects regardless of the type
       # check this http://lists.freebase.com/pipermail/developers/2007-December/001022.html
-      
-      query = {
-        :"/type/reflect/any_master" => [
-          {
-            :id => nil,
-            :link => nil,
-            :name => nil
-          }
-        ],
-        :"/type/reflect/any_reverse" => [
-          {
-            :id => nil,
-            :link => nil,
-            :name => nil
-          }
-        ],
-        :"/type/reflect/any_value" => [
-          {
-            :link => nil,
-            :value => nil
-            # :lang => "/lang/en",
-            # :type => "/type/text"
-          }
-        ],
-        :id => id
-      }
-      
-      Ken.session.mqlread(query)
+      Ken.session.mqlread(FETCH_ATTRIBUTES_QUERY.merge!(:id => id))
     end
     
     def load_attributes!
@@ -79,22 +96,7 @@ module Ken
     end
     
     def fetch_schema
-      query = {
-        :id => id,
-        :name => nil,
-        :type => [{
-          :id => nil,
-          :name => nil,
-          :properties => [{
-            :id => nil,
-            :name => nil,
-            :expected_type => nil,
-            :unique => nil
-          }]
-        }]
-      }
-      
-      Ken.session.mqlread(query)["type"]
+      Ken.session.mqlread(FETCH_SCHEMA_QUERY.merge!(:id => id))["type"]
     end
     
     # loads the resources metainfo
