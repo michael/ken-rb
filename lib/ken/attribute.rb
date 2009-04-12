@@ -5,9 +5,8 @@ module Ken
     # initializes a resource by json result
     def initialize(data, property)
       assert_kind_of 'data', data, Array
-      @data = data
-      @property = property # belongs to a property
-      self
+      assert_kind_of 'property', property, Ken::Property
+      @data, @property = data, property
     end
     
     def self.create(data, property)

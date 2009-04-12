@@ -6,9 +6,7 @@ module Ken
     def initialize(resource, type)
       assert_kind_of 'resource', resource, Ken::Resource
       assert_kind_of 'type', type, Ken::Type
-      @resource = resource # belongs to a resource
-      @type = type         # belongs to a type
-      self
+      @resource, @type = resource, type
     end
     
     # @api public

@@ -18,7 +18,6 @@ module Ken
       assert_kind_of 'data', data, Hash
       assert_kind_of 'type', type, String
       @data, @type = data, type
-      self
     end
     
     # @api public

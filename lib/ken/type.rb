@@ -5,7 +5,6 @@ module Ken
     def initialize(data)
       assert_kind_of 'data', data, Hash
       @data = data
-      self
     end
     
     # access property info

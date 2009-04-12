@@ -49,7 +49,6 @@ module Ken
       assert_kind_of 'data', data, Hash
       # intialize lazy if there is no type supplied
       @schema_loaded, @attributes_loaded, @data = false, false, data
-      self
     end
     
     def schema_loaded?
