@@ -78,7 +78,7 @@ module Ken
     assert_kind_of 'options', options, Hash
     query = { :name => nil }.merge!(options).merge!(:id => nil) # collection queries MUST have :id => nil, no?
     result = Ken.session.mqlread([ query ])    
-    return Ken::Collection.new(result.map { |r| Ken::Resource.new(r) })
+    Ken::Collection.new(result.map { |r| Ken::Resource.new(r) })
   end
   
   
@@ -93,7 +93,7 @@ module Ken
     assert_kind_of 'id', id, String
     raise ArgumentError, "id must be in /type/object/id format" unless valid_id_attribute?(id)
     result = Ken.session.mqlread(QUERY.merge!(:id => id))
-    return Ken::Resource.new(result)
+    Ken::Resource.new(result)
   end
   
   def self.valid_id_attribute?(id)
