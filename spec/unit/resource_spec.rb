@@ -5,7 +5,7 @@ require Pathname(__FILE__).dirname.expand_path.parent + 'spec_helper'
 describe Ken::Resource do
   
   before :each do
-    Ken::Logger.new(STDOUT, :info)
+    # Ken::Logger.new(STDOUT, :info)
     # Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
     data = load_fixture('the_police')
     @the_police = Ken::Resource.new(data)

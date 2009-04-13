@@ -26,9 +26,31 @@ Ken::Logger.new(STDOUT, :error)
 Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
 
 module Ken
+  
+  # Executes an Mql Query against the Freebase API and returns the result as
+  # a <tt>Collection</tt> of <tt>Resources</tt>.
+  #
+  # == Examples
+  #
+  # Ken.all(:name => "Apple", :type => "/music/album")
+  #
+  # Ken.all(
+  #  :directed_by => "George Lucas",
+  #  :starring => [{
+  #    :actor => "Harrison Ford"
+  #  }],
+  #  :type => "/film/film"
+  # )
+  # @api public
   def self.all(options = {})
-    # raise ArgumentError.new("must be a hash") unless options.is_a(::Hash)
-    raise NotImplementedError
+    raise ArgumentError.new("must be a hash") unless options.is_a?(::Hash)
+    query = {
+      :id => nil,
+      :name => nil
+    }.merge(options)
+    
+    result = Ken.session.mqlread([query])    
+    return Ken::Collection.new(result.map {|r| Ken::Resource.new(r)})
   end
   
   
@@ -38,6 +60,7 @@ module Ken
   # == Examples
   #
   #  Ken.get('/en/the_police') => #<Resource id="/en/the_police" name="The Police">
+  # @api public
   def self.get(id)
     # TODO check if it has a correct /type/object/id syntax
     raise ArgumentError.new("must be a string") unless id.is_a?(::String)
@@ -45,7 +68,7 @@ module Ken
     query = {
       :id => id,
       :name => nil,
-      :type => [{
+      :"ken:type" => [{
         :id => nil,
         :name => nil,
         :properties => [{

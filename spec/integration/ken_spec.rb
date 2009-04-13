@@ -9,9 +9,45 @@ describe Ken do
   end
   
   describe "Ken.get('/en/the_police')" do
-    it 'should return a Ken::Resource' do
+    it "should return a Ken::Resource" do
       the_police = Ken.get("/en/the_police")
       the_police.should be_kind_of(Ken::Resource)
+    end
+  end
+  
+  describe "Ken.all" do
+    it "should return a Ken::Collection of Ken::Resources" do
+      resources = Ken.all(:name => "Apple")
+      resources.should be_kind_of(Ken::Collection)
+      resources.first.should be_kind_of(Ken::Resource)
+    end
+    
+    it "should work with a limit specified" do
+      resources = Ken.all(:name => "Apple", :limit => 3)
+      resources.should have(3).items
+    end
+    
+    it "should work with a type specified" do
+      resources = Ken.all(:name => "Apple", :type => "/music/album")
+      resources.should have_at_least(1).items
+      resources.each {|r| r.types.select {|t| t.id == "/music/album"}.should have(1).items }
+    end
+    
+    it "should understand nested queries" do
+      query = {
+        :directed_by => "George Lucas",
+        :starring => [
+          {
+            :actor => "Harrison Ford"
+          }
+        ],
+        :type => "/film/film"
+      }
+      
+      resources = Ken.all(query)
+      resources.should have(3).items
+      resources.first.name.should == "Star Wars Episode IV: A New Hope"
+      resources.last.name.should == "The Star Wars Holiday Special"
     end
   end
   
