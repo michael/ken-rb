@@ -27,6 +27,38 @@ Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
 
 module Ken
   
+  extend Extlib::Assertions
+  
+  
+  # store query as a constant here.
+  # if the hash gets updated using
+  # #merge! or #update, this will mean
+  # that it actually stores the last
+  # query used. there are 2 sides to this.
+  # on the one hand, it isn't really a 
+  # constant anymore (ruby doesn't complain)?
+  # on the other hand, there is no need to
+  # create a new object everytime a query is
+  # executed. maybe this is fine, maybe not,
+  # this needs to be discussed.
+  
+  QUERY = query = {
+    # :id => id, # needs to be updated in instance mehtod
+    :name => nil,
+    :"ken:type" => [{
+      :id => nil,
+      :name => nil,
+      :properties => [{
+        :id => nil,
+        :name => nil,
+        :expected_type => nil,
+        :unique => nil,
+        :reverse_property => nil,
+        :master_property => nil,
+      }]
+    }]
+  }
+  
   # Executes an Mql Query against the Freebase API and returns the result as
   # a <tt>Collection</tt> of <tt>Resources</tt>.
   #
@@ -43,14 +75,10 @@ module Ken
   # )
   # @api public
   def self.all(options = {})
-    raise ArgumentError.new("must be a hash") unless options.is_a?(::Hash)
-    query = {
-      :id => nil,
-      :name => nil
-    }.merge(options)
-    
-    result = Ken.session.mqlread([query])    
-    return Ken::Collection.new(result.map {|r| Ken::Resource.new(r)})
+    assert_kind_of 'options', options, Hash
+    query = { :name => nil }.merge!(options).merge!(:id => nil) # collection queries MUST have :id => nil, no?
+    result = Ken.session.mqlread([ query ])    
+    return Ken::Collection.new(result.map { |r| Ken::Resource.new(r) })
   end
   
   
@@ -62,27 +90,14 @@ module Ken
   #  Ken.get('/en/the_police') => #<Resource id="/en/the_police" name="The Police">
   # @api public
   def self.get(id)
-    # TODO check if it has a correct /type/object/id syntax
-    raise ArgumentError.new("must be a string") unless id.is_a?(::String)
-    
-    query = {
-      :id => id,
-      :name => nil,
-      :"ken:type" => [{
-        :id => nil,
-        :name => nil,
-        :properties => [{
-          :id => nil,
-          :name => nil,
-          :expected_type => nil,
-          :unique => nil,
-          :reverse_property => nil,
-          :master_property => nil,
-        }]
-      }]
-    }
-    
-    result = Ken.session.mqlread(query)
+    assert_kind_of 'id', id, String
+    raise ArgumentError, "id must be in /type/object/id format" unless valid_id_attribute?(id)
+    result = Ken.session.mqlread(QUERY.merge!(:id => id))
     return Ken::Resource.new(result)
   end
+  
+  def self.valid_id_attribute?(id)
+    id =~ /\/\w+/
+  end
+  
 end # module Ken
