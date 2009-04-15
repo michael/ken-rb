@@ -42,7 +42,7 @@ module Ken
         }
       ],
       
-      # :id => id # needs to be merge!d in instance method
+      # :id => id # needs to be merg!d in instance method
     }
     
     

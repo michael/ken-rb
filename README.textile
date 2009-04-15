@@ -161,7 +161,7 @@ lowering the top level result.
 However you can instead navigate the normal way to figure out that values.
 _But won't that require another query to triggered? Doubtful._
 
-Let's look at some nested query:
+Let's look at a nested query:
 
 <pre>
 <code>
