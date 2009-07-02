@@ -112,20 +112,11 @@ module Ken
       @attributes_loaded
     end
     
-    # temporary!
-    def get_attribute(name)
-      load_attributes! unless attributes_loaded?
-      
-      @attributes[name]
-    end
-    
     private
-    
     # executes the fetch attributes query in order to load the full set if attributes
     # there's more info at http://lists.freebase.com/pipermail/developers/2007-December/001022.html
     # @api private
     def fetch_attributes
-      
       Ken.session.mqlread(FETCH_ATTRIBUTES_QUERY.merge!(:id => id))
     end
     
