@@ -39,5 +39,15 @@ module Ken
       @resource.properties.select { |p| p.type == @type}
     end
     
+    def method_missing sym
+      attribute_get(sym.to_s)
+    end
+    
+    private
+    # @api private
+    def attribute_get(name)
+      attributes.each { |a| return a if a.property.id =~ /\/#{name}$/ }
+      raise AttributeNotFound
+    end
   end
 end

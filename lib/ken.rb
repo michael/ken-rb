@@ -26,9 +26,7 @@ Ken::Logger.new(STDOUT, :error)
 Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
 
 module Ken
-  
   extend Extlib::Assertions
-  
   
   # store query as a constant here.
   # if the hash gets updated using
@@ -91,13 +89,13 @@ module Ken
   # @api public
   def self.get(id)
     assert_kind_of 'id', id, String
-    raise ArgumentError, "id must be in /type/object/id format" unless valid_id_attribute?(id)
+    # raise ArgumentError, "id must be in /type/object/id format" unless valid_id_attribute?(id)
     result = Ken.session.mqlread(QUERY.merge!(:id => id))
     Ken::Resource.new(result)
   end
   
-  def self.valid_id_attribute?(id)
-    id =~ /\/\w+/
-  end
+  # def self.valid_id_attribute?(id)
+  #   id =~ /\/\w+/
+  # end
   
 end # module Ken

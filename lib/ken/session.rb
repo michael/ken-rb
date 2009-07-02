@@ -16,6 +16,11 @@ module Ken
     end
   end
   
+  class AttributeNotFound < StandardError; end
+  class PropertyNotFound < StandardError; end
+  
+  
+  
   # partially taken from chris eppstein's freebase api
   # http://github.com/chriseppstein/freebase/tree
   class Session

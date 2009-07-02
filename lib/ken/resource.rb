@@ -1,6 +1,5 @@
 module Ken
   class Resource
-    
     include Extlib::Assertions
     
     FETCH_SCHEMA_QUERY = {
@@ -19,6 +18,7 @@ module Ken
     }
     
     FETCH_ATTRIBUTES_QUERY = {
+      # :id => id # needs to be merg!d in instance method
       :"/type/reflect/any_master" => [
         {
           :id => nil,
@@ -40,13 +40,10 @@ module Ken
           # :lang => "/lang/en",
           # :type => "/type/text"
         }
-      ],
-      
-      # :id => id # needs to be merg!d in instance method
+      ]
     }
     
-    
-    # initializes a resource by json result
+    # initializes a resource by a json result
     def initialize(data)
       assert_kind_of 'data', data, Hash
       # intialize lazy if there is no type supplied
@@ -96,7 +93,7 @@ module Ken
       @properties
     end
     
-    # returns all attributes for every type the resource is an instance from
+    # returns all attributes for every type the resource is an instance of
     # @api public
     def attributes
       load_attributes! unless attributes_loaded?
@@ -115,16 +112,28 @@ module Ken
       @attributes_loaded
     end
     
+    # temporary!
+    def get_attribute(name)
+      load_attributes! unless attributes_loaded?
+      
+      @attributes[name]
+    end
+    
     private
+    
+    # executes the fetch attributes query in order to load the full set if attributes
+    # there's more info at http://lists.freebase.com/pipermail/developers/2007-December/001022.html
+    # @api private
     def fetch_attributes
-      # fetching all objects regardless of the type
-      # check this http://lists.freebase.com/pipermail/developers/2007-December/001022.html
+      
       Ken.session.mqlread(FETCH_ATTRIBUTES_QUERY.merge!(:id => id))
     end
     
+    # loads the full set of attributes using reflection
+    # information is extracted from master, value and reverse attributes
+    # @api private
     def load_attributes!
       data = @data["ken:attribute"] || fetch_attributes
-      
       # master & value attributes
       raw_attributes = Ken::Util.convert_hash(data["/type/reflect/any_master"])
       raw_attributes.merge!(Ken::Util.convert_hash(data["/type/reflect/any_value"]))
@@ -146,18 +155,18 @@ module Ken
       @attributes_loaded = true
     end
     
+    # executes the fetch schema query in order to load all schema information
+    # @api private
     def fetch_schema
       Ken.session.mqlread(FETCH_SCHEMA_QUERY.merge!(:id => id))["ken:type"]
     end
     
-    # loads the resources metainfo
+    # loads the resource's metainfo
     # @api private
     def load_schema!
       @data["ken:type"] ||= fetch_schema
       @types = Ken::Collection.new(@data["ken:type"].map { |type| Ken::Type.new(type) })
       @schema_loaded = true
     end
-    
-
   end # class Resource
 end # module Ken
