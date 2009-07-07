@@ -18,13 +18,11 @@ module Ken
   
   class AttributeNotFound < StandardError; end
   class PropertyNotFound < StandardError; end
-  
-  
+  class ResourceNotFound < StandardError; end
   
   # partially taken from chris eppstein's freebase api
   # http://github.com/chriseppstein/freebase/tree
   class Session
-    # include Singleton
     
     public
     # Initialize a new Ken Session
@@ -53,7 +51,6 @@ module Ken
 
     # get the service url for the specified service.
     def service_url(svc)
-      #"http://#{Configuration.instance[:host]}#{SERVICES[svc]}"
       "#{@host}#{SERVICES[svc]}"
     end
 
@@ -72,30 +69,51 @@ module Ken
       end
     end # handle_read_error
 
+
     # perform a mqlread and return the results
     # TODO: should support multiple queries
     #       you should be able to pass an array of queries
+    # Specify :cursor => true to batch the results of a query, sending multiple requests if necessary.
     def mqlread(query, options = {})
       Ken.logger.info ">>> Sending Query: #{query.to_json}"
-      
-      envelope = { :qname => {:query => query }}
-      
-      response = http_request mqlread_service_url, :queries => envelope.to_json
-      result = JSON.parse response
-      inner = result['qname']
-      handle_read_error(inner)
-      
-      Ken.logger.info "<<< Received Response: #{inner['result'].inspect}"
-      
-      # will always return the converted ruby hash (from json)
-      inner['result']
-    end # mqlread
+      cursor = options[:cursor]
+      if cursor
+        query_result = []
+        while cursor
+          response = get_query_response(query, cursor)
+          query_result += response['result']
+          cursor = response['cursor']
+        end
+      else
+        response = get_query_response(query, cursor)
+        cursor = response['cursor']
+        query_result = response['result']
+      end
+      query_result
+    end
 
     protected
+    # returns parsed json response from freebase mqlread service
+    def get_query_response(query, cursor=nil)
+      envelope = { :qname => {:query => query }}
+      envelope[:qname][:cursor] = cursor if cursor
+      
+      response = http_request mqlread_service_url, :queries => envelope.to_json
+      
+      result = JSON.parse response
+      
+      inner = result['qname']
+      handle_read_error(inner)
+      Ken.logger.info "<<< Received Response: #{inner['result'].inspect}"
+      inner
+    end
+    
+    # encode parameters
     def params_to_string(parameters)
       parameters.keys.map {|k| "#{URI.encode(k.to_s)}=#{URI.encode(parameters[k])}" }.join('&')
     end
-
+    
+    # does the dirty work
     def http_request(url, parameters = {})
       params = params_to_string(parameters)
       url << '?'+params unless params !~ /\S/

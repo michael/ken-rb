@@ -2,7 +2,6 @@ module Ken
   class Attribute
     
     include Extlib::Assertions
-    
     attr_reader :property
     
     # initializes a resource by json result
@@ -12,6 +11,8 @@ module Ken
       @data, @property = data, property
     end
     
+    # factory method for creating an attribute instance
+    # @api semipublic
     def self.create(data, property)
       Ken::Attribute.new(data, property)
     end
@@ -26,26 +27,34 @@ module Ken
       result = "#<Attribute property=\"#{property.id || "nil"}\">"
     end
     
-    # returns just the subject
+    # returns a collection of values
+    # in case of a unique property the array holds just one value
+    # @api public
     def values
       subject
     end
     
+    # unique properties can have at least one value
+    # @api public
     def unique?
       @property.unique?
     end
     
+    # object type properties always link to resources
+    # @api public
     def object_type?
       @property.object_type?
     end
     
-    # is this a good idea? using the values method seems more natural to me
-    # def method_missing(name, *args, &block)
-    #   subject.send(name, *args, &block)
-    # end
+    # returns true if the property is a value type
+    # value type properties refer to simple values like /type/text
+    # @api public
+    def value_type?
+      @property.value_type?
+    end
     
-    # initializes the subject if used the first time
     private
+    # initializes the subject if used for the first time
     def subject
       @subject ||= Ken::Collection.new(@data.map { |r| object_type? ? Ken::Resource.new(r) : r["value"] })
     end

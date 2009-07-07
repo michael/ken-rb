@@ -17,6 +17,7 @@ module Ken
       @type.to_s
     end
     
+    # return correspondent type
     # @api public
     def type
       @type
@@ -39,11 +40,13 @@ module Ken
       @resource.properties.select { |p| p.type == @type}
     end
     
+    # delegate to attribute_get
     def method_missing sym
       attribute_get(sym.to_s)
     end
     
     private
+    # search for an attribute by name and return it
     # @api private
     def attribute_get(name)
       attributes.each { |a| return a if a.property.id =~ /\/#{name}$/ }

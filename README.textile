@@ -5,18 +5,15 @@ h2. Introduction
 Ken is a Data Layer for Knowledge Representation.
 
 It's being built to access the Metaweb Services supplied by Freebase.com.
-Just born, the project’s goals are the provision of a concise API for querying and writing.
+The project’s goals are the provision of a concise API for querying and writing.
 Therefore it wraps the Metaweb Architecture to smart Ruby Objects.
 
 You can navigate the Freebase Graph using a rubyish syntax.
-
-If things go right, you should be able to use this library as a Data Layer (instead of or in addition to 
-ActiveRecord/DataMapper) for your Web Framework of choice (Merb, Rails).
-
+Also you can use this library as a Data Layer (instead of or in addition to ActiveRecord/DataMapper) for your Web Framework of choice (Merb, Rails).
 
 h2. Installation
 
-Use GitHub RubyGems.
+Use GitHub RubyGems:
 
 <pre>
 <code>
@@ -25,8 +22,15 @@ Use GitHub RubyGems.
 </code>
 </pre>
 
-Or even better, stay on The Edge.
-  
+In your Ruby files add:
+<pre>
+<code>
+  require 'rubygems'
+  gem 'michael-ken'
+  require 'ken'
+</code>
+</pre>
+
 
 h2. Getting started
 
@@ -159,7 +163,7 @@ So asking for values in a nested level does not make sense. Use nested statement
 lowering the top level result.
 
 However you can instead navigate the normal way to figure out that values.
-_But won't that require another query to triggered? Doubtful._
+_But won't that require another query to triggered? Certainly._
 
 Let's look at a nested query:
 
@@ -182,32 +186,76 @@ Let's look at a nested query:
 </code>
 </pre>
 
-h2. Status
+h3. Access properties attributes directly
 
-Currently, the focus lies on inspecting Freebase Resources in a generic way. That's why
-there is no support for accessing Properties or Attributes directly when you know them already.
-That keeps me focussed and prevents me from adding too much sugar.
+Ken is primarily designed for inspecting resources in a generic way, what's ideal for domain independent browsing applications.
+However, there are legitimate situations where you already know what you want to access.
 
-Therefore I would say that the first application using Ken will definitely be a Browser Application. :)
+That's why I now added direct Property/Attribute access, but only on a Type/View level:
 
-If you rather want to query based on Types and access Properties/Attributes directly you should consider using
-Chris "Eppsteins Freebase Library":http://github.com/chriseppstein/freebase/tree/master instead. 
+<pre>
+<code>
+  resource = Ken.get('/en/new_order')
+  type = resource.types[1] # => #<Type id="/music/artist" name="Musical Artist">
+  # because we know _/music/artist_ has a _genre_ property we can access that directly
+  type.genre # => #<Property id="/music/artist/genre" expected_type="/music/genre" unique="false" object_type="true">
+</code>
+</pre>
+The same works for views:
+<pre>
+<code>
+  resource = Ken.get('/en/new_order')
+  view = resource.views[1] # => #<View type="/music/artist">
+  # because we know _/music/artist_ has a _genre_ property we can access attribute directly as well
+  view.genre # => #<Attribute property="/music/artist/genre">
+</code>
+</pre>
+
+If you rather want to query based on Types and access Properties/Attributes directly you can consider using
+Chris "Eppsteins Freebase Library":http://github.com/chriseppstein/freebase/tree/master as an alternative. 
+
+
+h3. Low Level API
+
+Sometimes you may want to do specific queries instead of inspecting Resources as a whole.
+In such a case you would want to use Ken's low level API.
+
+_mqlread_ works like the regular _mqlread service_, except that you are able to pass ruby hashes instead of JSON.
+And you don't have to deal with HTTP, parameter encoding and parsing JSON.
+
+<pre>
+<code>
+  artists = Ken.session.mqlread([{
+    :type => "/music/artist",
+    :id => nil, 
+    :"/common/topic/webpage" => [{:uri => nil}], 
+    :home_page => [{:uri => nil}], 
+    :limit => 2
+  }])  
+  
+  # => [
+         {"type"=>"/music/artist", "home_page"=>[{"uri"=>"http://www.massiveattack.co.uk/"}], "id"=>"/en/massive_attack", "/common/topic/webpage"=>[{"uri"=>"http://musicmoz.org/Bands_and_Artists/M/Massive_Attack/"}, {"uri"=>"http://www.discogs.com/artist/Massive+Attack"}, {"uri"=>"http://www.massiveattackarea.com/"}, {"uri"=>"http://www.massiveattack.co.uk/"}, {"uri"=>"http://www.massiveattack.com/"}]},
+         {"type"=>"/music/artist", "home_page"=>[{"uri"=>"http://www.apartment26.com/"}], "id"=>"/en/apartment_26", "/common/topic/webpage"=>[{"uri"=>"http://www.discogs.com/artist/Apartment+26"}, {"uri"=>"http://musicmoz.org/Bands_and_Artists/A/Apartment_26/"}, {"uri"=>"http://www.apartment26.com/"}]}
+       ]
+</code>
+</pre>
+
+h2. Project Status
 
 h3. Features
 
 * Fetching of single Resources
 * Fetching of multiple Resources by specifying a query
+* Accessing Properties/Attributes directly (on a type/view level)
 * Type inspection
-* Attributes inspection
+* Attribute inspection
+* Low Level API (mqlread)
+* Rails and Merb support
 * Views on Resources to group Attributes based on the Resource's types
-* Some specs
 
 h3. Roadmap
 
-# Much more specs
-# Better Type Support
-# API for Set Based Browsing (see http://mqlx.com/~david/parallax/)
-# Accessing Properties/Attributes directly (e.g. resource.genres )
+# More tests
 # Write-Support
 
 Initial thoughts, obviously not up-to-date and not conforming to the current version, are available at "http://wiki.github.com/michael/ken":http://wiki.github.com/michael/ken.

@@ -22,11 +22,13 @@ module Ken
       @data, @type = data, type
     end
     
+    # property id
     # @api public
     def id
       @data["id"]
     end
     
+    # property name
     # @api public
     def name
       @data["name"]
@@ -50,11 +52,13 @@ module Ken
       @type
     end
     
+    # reverse property, which represent incoming links
     # @api public
     def reverse_property
       @data["reverse_property"]
     end
     
+    # master property, which represent an outgoing link (or primitive value)
     # @api public
     def master_property
       @data["master_property"]
@@ -78,6 +82,7 @@ module Ken
       VALUE_TYPES.include?(expected_type)
     end
     
+    # type, which attribute values of that property are expected to have
     # @api public
     def expected_type
       @data["expected_type"]

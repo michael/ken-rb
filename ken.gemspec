@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ken}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["michael"]
-  s.date = %q{2009-05-14}
+  s.date = %q{2009-07-02}
   s.email = %q{ma[at]zive[dot]at}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "TODO",
      "VERSION",
      "examples/artist.rb",
+     "ken.gemspec",
      "lib/ken.rb",
      "lib/ken/attribute.rb",
      "lib/ken/collection.rb",
@@ -34,40 +35,40 @@ Gem::Specification.new do |s|
      "lib/ken/util.rb",
      "lib/ken/version.rb",
      "lib/ken/view.rb",
-     "spec/fixtures/music_artist.json",
-     "spec/fixtures/the_police.json",
-     "spec/integration/ken_spec.rb",
-     "spec/spec.opts",
-     "spec/spec_helper.rb",
-     "spec/unit/attribute_spec.rb",
-     "spec/unit/property_spec.rb",
-     "spec/unit/resource_spec.rb",
-     "spec/unit/session_spec.rb",
-     "spec/unit/type_spec.rb",
-     "spec/unit/view_spec.rb",
-     "tasks/spec.rb"
+     "rails/init.rb",
+     "tasks/ken.rb",
+     "tasks/spec.rb",
+     "test/fixtures/music_artist.json",
+     "test/fixtures/the_police.json",
+     "test/integration/ken_test.rb",
+     "test/test_helper.rb",
+     "test/unit/attribute_test.rb",
+     "test/unit/property_test.rb",
+     "test/unit/resource_test.rb",
+     "test/unit/session_test.rb",
+     "test/unit/type_test.rb",
+     "test/unit/view_test.rb"
   ]
-  s.has_rdoc = true
   s.homepage = %q{http://github.com/michael/ken}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.1}
+  s.rubygems_version = %q{1.3.4}
   s.summary = %q{Ruby API for Accessing the Freebase}
   s.test_files = [
-    "spec/integration/ken_spec.rb",
-     "spec/spec_helper.rb",
-     "spec/unit/attribute_spec.rb",
-     "spec/unit/property_spec.rb",
-     "spec/unit/resource_spec.rb",
-     "spec/unit/session_spec.rb",
-     "spec/unit/type_spec.rb",
-     "spec/unit/view_spec.rb",
+    "test/integration/ken_test.rb",
+     "test/test_helper.rb",
+     "test/unit/attribute_test.rb",
+     "test/unit/property_test.rb",
+     "test/unit/resource_test.rb",
+     "test/unit/session_test.rb",
+     "test/unit/type_test.rb",
+     "test/unit/view_test.rb",
      "examples/artist.rb"
   ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 2
+    s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
     else

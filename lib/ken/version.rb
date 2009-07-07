@@ -1,3 +1,0 @@
-module Ken
-  VERSION = '0.0.2'
-end

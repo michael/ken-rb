@@ -10,6 +10,10 @@ class KenTest < Test::Unit::TestCase
       the_police = Ken.get("/en/the_police")
       the_police.should be_kind_of(Ken::Resource)
     end
+    
+    should 'raise a Ken::ResourceNotFound error if id does not exist' do
+      lambda { Ken.get("/en/non_existent_resource") }.should raise_error(Ken::ResourceNotFound)
+    end
   end
   
   context "Ken.all" do
@@ -23,7 +27,11 @@ class KenTest < Test::Unit::TestCase
       resources = Ken.all(:name => "Apple", :limit => 3)
       resources.length.should == 3
     end
-      
+    
+    should "be able to return more than 100 resources (using cursored queries) " do
+      Ken.all({:type => '/chemistry/chemical_element'}).length.should > 100
+    end
+    
     should "work with a type specified" do
       resources = Ken.all(:name => "Apple", :type => "/music/album")
       resources.length.should >= 1

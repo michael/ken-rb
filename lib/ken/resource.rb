@@ -37,24 +37,27 @@ module Ken
         {
           :link => nil,
           :value => nil
+          # TODO: support multiple language
           # :lang => "/lang/en",
           # :type => "/type/text"
         }
       ]
     }
     
-    # initializes a resource by a json result
+    # initializes a resource using a json result
     def initialize(data)
       assert_kind_of 'data', data, Hash
       # intialize lazy if there is no type supplied
       @schema_loaded, @attributes_loaded, @data = false, false, data
     end
     
+    # resource id
     # @api public
     def id
       @data["id"] || ""
     end
     
+    # resource name
     # @api public
     def name
       @data["name"] || ""
@@ -77,7 +80,7 @@ module Ken
       @types
     end
     
-    # returns all available vies based on the assigned types
+    # returns all available views based on the assigned types
     # @api public
     def views
       @views ||= Ken::Collection.new(types.map { |type| Ken::View.new(self, type) })
@@ -114,7 +117,7 @@ module Ken
     
     private
     # executes the fetch attributes query in order to load the full set if attributes
-    # there's more info at http://lists.freebase.com/pipermail/developers/2007-December/001022.html
+    # more info at http://lists.freebase.com/pipermail/developers/2007-December/001022.html
     # @api private
     def fetch_attributes
       Ken.session.mqlread(FETCH_ATTRIBUTES_QUERY.merge!(:id => id))

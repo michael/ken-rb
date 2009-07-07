@@ -8,7 +8,6 @@ require 'addressable/uri'
 
 dir = Pathname(__FILE__).dirname.expand_path + 'ken'
 
-require dir + 'version'
 require dir + 'util'
 require dir + 'resource'
 require dir + 'type'
@@ -60,6 +59,7 @@ module Ken
   # Executes an Mql Query against the Freebase API and returns the result as
   # a <tt>Collection</tt> of <tt>Resources</tt>.
   #
+  # performs a cursored query unless there's a limit specified
   # == Examples
   #
   # Ken.all(:name => "Apple", :type => "/music/album")
@@ -74,8 +74,8 @@ module Ken
   # @api public
   def self.all(options = {})
     assert_kind_of 'options', options, Hash
-    query = { :name => nil }.merge!(options).merge!(:id => nil) # collection queries MUST have :id => nil, no?
-    result = Ken.session.mqlread([ query ])    
+    query = { :name => nil }.merge!(options).merge!(:id => nil)
+    result = Ken.session.mqlread([ query ], :cursor => !options[:limit])    
     Ken::Collection.new(result.map { |r| Ken::Resource.new(r) })
   end
   
@@ -89,13 +89,9 @@ module Ken
   # @api public
   def self.get(id)
     assert_kind_of 'id', id, String
-    # raise ArgumentError, "id must be in /type/object/id format" unless valid_id_attribute?(id)
     result = Ken.session.mqlread(QUERY.merge!(:id => id))
+    raise ResourceNotFound unless result
     Ken::Resource.new(result)
   end
-  
-  # def self.valid_id_attribute?(id)
-  #   id =~ /\/\w+/
-  # end
   
 end # module Ken
