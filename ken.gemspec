@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ken}
-  s.version = "0.0.4"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["michael"]
-  s.date = %q{2009-07-02}
+  s.date = %q{2009-07-08}
   s.email = %q{ma[at]zive[dot]at}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "TODO",
      "VERSION",
      "examples/artist.rb",
+     "examples/artist_links.rb",
      "ken.gemspec",
      "lib/ken.rb",
      "lib/ken/attribute.rb",
@@ -33,7 +34,6 @@ Gem::Specification.new do |s|
      "lib/ken/session.rb",
      "lib/ken/type.rb",
      "lib/ken/util.rb",
-     "lib/ken/version.rb",
      "lib/ken/view.rb",
      "rails/init.rb",
      "tasks/ken.rb",
@@ -63,7 +63,8 @@ Gem::Specification.new do |s|
      "test/unit/session_test.rb",
      "test/unit/type_test.rb",
      "test/unit/view_test.rb",
-     "examples/artist.rb"
+     "examples/artist.rb",
+     "examples/artist_links.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -71,8 +72,11 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<extlib>, [">= 0"])
     else
+      s.add_dependency(%q<extlib>, [">= 0"])
     end
   else
+    s.add_dependency(%q<extlib>, [">= 0"])
   end
 end
