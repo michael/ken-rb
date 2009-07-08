@@ -23,6 +23,7 @@ Use GitHub RubyGems:
 </pre>
 
 In your Ruby files add:
+
 <pre>
 <code>
   require 'rubygems'
@@ -201,7 +202,9 @@ That's why I now added direct Property/Attribute access, but only on a Type/View
   type.genre # => #<Property id="/music/artist/genre" expected_type="/music/genre" unique="false" object_type="true">
 </code>
 </pre>
+
 The same works for views:
+
 <pre>
 <code>
   resource = Ken.get('/en/new_order')
