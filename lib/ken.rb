@@ -39,8 +39,8 @@ module Ken
   # executed. maybe this is fine, maybe not,
   # this needs to be discussed.
   
-  QUERY = query = {
-    # :id => id, # needs to be updated in instance mehtod
+  FETCH_DATA_QUERY = {
+    # :id => id, # needs to be merge!d in instance method
     :name => nil,
     :"ken:type" => [{
       :id => nil,
@@ -53,8 +53,35 @@ module Ken
         :reverse_property => nil,
         :master_property => nil,
       }]
-    }]
+    }],
+    :"/type/reflect/any_master" => [
+      {
+        :id => nil,
+        :link => nil,
+        :name => nil,
+        :optional => true
+      }
+    ],
+    :"/type/reflect/any_reverse" => [
+      {
+        :id => nil,
+        :link => nil,
+        :name => nil,
+        :optional => true
+      }
+    ],
+    :"/type/reflect/any_value" => [
+      {
+        :link => nil,
+        :value => nil,
+        :optional => true
+        # TODO: support multiple language
+        # :lang => "/lang/en",
+        # :type => "/type/text"
+      }
+    ]
   }
+  
   
   # Executes an Mql Query against the Freebase API and returns the result as
   # a <tt>Collection</tt> of <tt>Resources</tt>.
@@ -89,7 +116,7 @@ module Ken
   # @api public
   def self.get(id)
     assert_kind_of 'id', id, String
-    result = Ken.session.mqlread(QUERY.merge!(:id => id))
+    result = Ken.session.mqlread(FETCH_DATA_QUERY.merge!(:id => id))
     raise ResourceNotFound unless result
     Ken::Resource.new(result)
   end

@@ -7,7 +7,7 @@
       "expected_type" : "/location/location",
       "id" : "/music/artist/origin",
       "name" : "Place Musical Career Began",
-      "unique" : null
+      "unique" :true
     },
     {
       "expected_type" : "/type/datetime",

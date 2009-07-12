@@ -22,7 +22,7 @@ class KenTest < Test::Unit::TestCase
       resources.should be_kind_of(Ken::Collection)
       resources.first.should be_kind_of(Ken::Resource)
     end
-  
+      
     should "work with a limit specified" do
       resources = Ken.all(:name => "Apple", :limit => 3)
       resources.length.should == 3
@@ -48,7 +48,7 @@ class KenTest < Test::Unit::TestCase
         ],
         :type => "/film/film"
       }
-    
+
       resources = Ken.all(query)
       resources.length.should == 3
       resources.first.name.should == "Star Wars Episode IV: A New Hope"
