@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["michael"]
-  s.date = %q{2009-07-11}
+  s.date = %q{2009-07-24}
   s.email = %q{ma[at]zive[dot]at}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -73,10 +73,16 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<extlib>, [">= 0"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<addressable>, [">= 0"])
     else
       s.add_dependency(%q<extlib>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<addressable>, [">= 0"])
     end
   else
     s.add_dependency(%q<extlib>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<addressable>, [">= 0"])
   end
 end
