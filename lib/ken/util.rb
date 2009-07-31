@@ -16,12 +16,12 @@ module Ken
   end
 end
 
-class Object
-  # nice for debugging
-  # usage: print_call_stack(:method_name, 2, 10)
-  def print_call_stack(from = 2, to = nil, html = false)
-    (from..(to ? to : caller.length)).each do |idx| 
-      p "[#{idx}]: #{caller[idx]}#{html ? '<br />' : ''}"
-    end
-  end
-end
+# class Object
+#   # nice for debugging
+#   # usage: print_call_stack(:method_name, 2, 10)
+#   def print_call_stack(from = 2, to = nil, html = false)
+#     (from..(to ? to : caller.length)).each do |idx| 
+#       p "[#{idx}]: #{caller[idx]}#{html ? '<br />' : ''}"
+#     end
+#   end
+# end

@@ -2,7 +2,6 @@ require 'pathname'
 require 'rubygems'
 require 'net/http'
 require 'json'
-require 'extlib'
 require 'extlib/assertions'
 require 'addressable/uri'
 
