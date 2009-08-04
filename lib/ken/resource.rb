@@ -87,6 +87,13 @@ module Ken
       @views ||= Ken::Collection.new(types.map { |type| Ken::View.new(self, type) })
     end
     
+    # returns individual view based on the requested type
+    # @api public
+    def view(type)
+      types.each { |t| return Ken::View.new(self, t) if t.id =~ /^#{Regexp.escape(type)}$/ }
+      raise AttributeNotFound
+    end
+
     # returns all the properties from all assigned types
     # @api public
     def properties
