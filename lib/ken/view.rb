@@ -34,6 +34,13 @@ module Ken
       @resource.attributes.select { |a| a.property.type == @type}
     end
     
+    # search for an attribute by name and return it
+    # @api public
+    def attribute(name)
+      attributes.each { |a| return a if a.property.id =~ /\/#{name}$/ }
+      nil
+    end
+    
     # returns properties which are member of the view's type    
     # @api public
     def properties
@@ -42,15 +49,21 @@ module Ken
     
     # delegate to attribute_get
     def method_missing sym
-      attribute_get(sym.to_s)
+      if sym.to_s =~ /!$/
+        attrib = attribute(sym.to_s[0...-1])
+        raise_on_error = true
+      else
+        attrib = attribute(sym.to_s)
+        raise_on_error = false
+      end
+      if !attrib.nil?
+        attrib
+      elsif raise_on_error
+        raise AttributeNotFound
+      else
+        super
+      end
     end
     
-    private
-    # search for an attribute by name and return it
-    # @api private
-    def attribute_get(name)
-      attributes.each { |a| return a if a.property.id =~ /\/#{name}$/ }
-      raise AttributeNotFound
-    end
   end
 end
