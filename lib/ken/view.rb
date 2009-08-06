@@ -49,20 +49,7 @@ module Ken
     
     # delegate to attribute_get
     def method_missing sym
-      if sym.to_s =~ /!$/
-        attrib = attribute(sym.to_s[0...-1])
-        raise_on_error = true
-      else
-        attrib = attribute(sym.to_s)
-        raise_on_error = false
-      end
-      if !attrib.nil?
-        attrib
-      elsif raise_on_error
-        raise AttributeNotFound
-      else
-        super
-      end
+      attribute(sym.to_s)
     end
     
   end
