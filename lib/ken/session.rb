@@ -19,6 +19,7 @@ module Ken
   class AttributeNotFound < StandardError; end
   class PropertyNotFound < StandardError; end
   class ResourceNotFound < StandardError; end
+  class ViewNotFound < StandardError; end
   
   # partially taken from chris eppstein's freebase api
   # http://github.com/chriseppstein/freebase/tree

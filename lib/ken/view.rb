@@ -38,7 +38,7 @@ module Ken
     # @api public
     def attribute(name)
       attributes.each { |a| return a if a.property.id =~ /\/#{name}$/ }
-      nil
+      raise AttributeNotFound
     end
     
     # returns properties which are member of the view's type    

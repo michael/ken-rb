@@ -40,6 +40,7 @@ module Ken
   
   FETCH_DATA_QUERY = {
     # :id => id, # needs to be merge!d in instance method
+    :guid => nil,
     :name => nil,
     :"ken:type" => [{
       :id => nil,

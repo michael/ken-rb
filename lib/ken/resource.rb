@@ -2,49 +2,6 @@ module Ken
   class Resource
     include Extlib::Assertions
     
-    FETCH_DATA_QUERY = {
-      # :id => id, # needs to be merge!d in instance method
-      :name => nil,
-      :"ken:type" => [{
-        :id => nil,
-        :name => nil,
-        :properties => [{
-          :id => nil,
-          :name => nil,
-          :expected_type => nil,
-          :unique => nil,
-          :reverse_property => nil,
-          :master_property => nil,
-        }]
-      }],
-      :"/type/reflect/any_master" => [
-        {
-          :id => nil,
-          :link => nil,
-          :name => nil,
-          :optional => true
-        }
-      ],
-      :"/type/reflect/any_reverse" => [
-        {
-          :id => nil,
-          :link => nil,
-          :name => nil,
-          :optional => true
-        }
-      ],
-      :"/type/reflect/any_value" => [
-        {
-          :link => nil,
-          :value => nil,
-          :optional => true
-          # TODO: support multiple language
-          # :lang => "/lang/en",
-          # :type => "/type/text"
-        }
-      ]
-    }
-    
     # initializes a resource using a json result
     def initialize(data)
       assert_kind_of 'data', data, Hash
@@ -56,6 +13,12 @@ module Ken
     # @api public
     def id
       @data["id"] || ""
+    end
+    
+    # resource guid
+    # @api public
+    def guid
+      @data['guid'] || ""
     end
     
     # resource name
@@ -91,7 +54,7 @@ module Ken
     # @api public
     def view(type)
       types.each { |t| return Ken::View.new(self, t) if t.id =~ /^#{Regexp.escape(type)}$/ }
-      raise AttributeNotFound
+      raise ViewNotFound
     end
 
     # returns all the properties from all assigned types
