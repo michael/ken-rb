@@ -26,7 +26,7 @@ class ViewTest < Test::Unit::TestCase
     
     context "when accessing a direct attribute" do
       setup do
-        @genre = @view.genre
+        @genre = @view.attribute('genre')
         @album = @view.album
       end
       

@@ -47,7 +47,7 @@ module Ken
       @resource.properties.select { |p| p.type == @type}
     end
     
-    # delegate to attribute_get
+    # delegate to attribute
     def method_missing sym
       attribute(sym.to_s)
     end
