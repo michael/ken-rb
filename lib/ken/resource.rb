@@ -2,6 +2,8 @@ module Ken
   class Resource
     include Extlib::Assertions
     
+    attr_reader :data
+    
     # initializes a resource using a json result
     def initialize(data)
       assert_kind_of 'data', data, Hash
@@ -54,7 +56,7 @@ module Ken
     # @api public
     def view(type)
       types.each { |t| return Ken::View.new(self, t) if t.id =~ /^#{Regexp.escape(type)}$/ }
-      raise ViewNotFound
+      nil
     end
 
     # returns all the properties from all assigned types
@@ -72,6 +74,13 @@ module Ken
     def attributes
       load_attributes! unless attributes_loaded?
       @attributes.values
+    end
+    
+    # search for an attribute by name and return it
+    # @api public
+    def attribute(name)
+      attributes.each { |a| return a if a.property.id == name }
+      nil
     end
     
     # returns true if type information is already loaded
