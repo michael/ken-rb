@@ -41,7 +41,7 @@ class ViewTest < Test::Unit::TestCase
       end
       
       should "raise AttributeNotFound when invalid propertyname is supplied" do
-        lambda { @view.not_existing_attribute }.should raise_error(Ken::AttributeNotFound)
+        @view.not_existing_attribute.should be_nil
       end
     end # context
   end # context
