@@ -20,9 +20,8 @@ class ResourceTest < Test::Unit::TestCase
     
     should "return individual view based requested type" do
       @the_police.view('/music/artist').should be_kind_of(Ken::View)
-      lambda { @the_police.view('/location/location') }.should raise_error(Ken::ViewNotFound)
+      @the_police.view('/location/location').should be_nil # not existent view
     end
-    
     
     should 'have a full set of attributes' do
       @the_police.attributes.should_not be_nil
