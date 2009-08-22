@@ -9,7 +9,7 @@ class SessionTest < Test::Unit::TestCase
 
     should 'return the correct set of types' do
       result = Ken.session.mqlread({:id => "/en/the_police", :type => []})
-      result['type'].length.should == 6
+      result['type'].length.should >= 1
     end
 
     should 'raise a Ken::MqlReadError if node does not exist' do

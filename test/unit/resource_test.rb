@@ -18,9 +18,14 @@ class ResourceTest < Test::Unit::TestCase
       @the_police.views.first.type.should be_kind_of(Ken::Type)
     end
     
-    should "return individual view based requested type" do
+    should "return individual view based requested type id" do
       @the_police.view('/music/artist').should be_kind_of(Ken::View)
       @the_police.view('/location/location').should be_nil # not existent view
+    end
+    
+    should "return individual type based requested type id" do
+      @the_police.type('/music/artist').should be_kind_of(Ken::Type)
+      @the_police.type('/location/location').should be_nil # not existent type
     end
     
     should 'have a full set of attributes' do

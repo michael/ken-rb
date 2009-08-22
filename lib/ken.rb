@@ -59,7 +59,8 @@ module Ken
         :id => nil,
         :link => nil,
         :name => nil,
-        :optional => true
+        :optional => true,
+        :limit => 999999
       }
     ],
     :"/type/reflect/any_reverse" => [
@@ -67,21 +68,22 @@ module Ken
         :id => nil,
         :link => nil,
         :name => nil,
-        :optional => true
+        :optional => true,
+        :limit => 999999
       }
     ],
     :"/type/reflect/any_value" => [
       {
         :link => nil,
         :value => nil,
-        :optional => true
+        :optional => true,
+        :limit => 999999
         # TODO: support multiple language
         # :lang => "/lang/en",
         # :type => "/type/text"
       }
     ]
   }
-  
   
   # Executes an Mql Query against the Freebase API and returns the result as
   # a <tt>Collection</tt> of <tt>Resources</tt>.

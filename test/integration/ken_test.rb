@@ -5,7 +5,7 @@ class KenTest < Test::Unit::TestCase
     setup do
       Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
     end
-  
+    
     should 'return a Ken::Resource' do
       the_police = Ken.get("/en/the_police")
       the_police.should be_kind_of(Ken::Resource)
@@ -48,7 +48,7 @@ class KenTest < Test::Unit::TestCase
         ],
         :type => "/film/film"
       }
-
+  
       resources = Ken.all(query)
       resources.length.should == 3
       resources.first.name.should == "Star Wars Episode IV: A New Hope"

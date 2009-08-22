@@ -1,5 +1,5 @@
 module Ken
-  class << self #:nodoc:
+  class << self
     attr_accessor :session
   end
   
@@ -16,15 +16,14 @@ module Ken
     end
   end
   
-  class AttributeNotFound < StandardError; end
-  class PropertyNotFound < StandardError; end
-  class ResourceNotFound < StandardError; end
-  class ViewNotFound < StandardError; end
+  class AttributeNotFound < StandardError ; end
+  class PropertyNotFound < StandardError ; end
+  class ResourceNotFound < StandardError ; end
+  class ViewNotFound < StandardError ; end
   
   # partially taken from chris eppstein's freebase api
   # http://github.com/chriseppstein/freebase/tree
   class Session
-    
     public
     # Initialize a new Ken Session
     #   Ken::Session.new(host{String, IO}, username{String}, password{String})
@@ -70,11 +69,10 @@ module Ken
       end
     end # handle_read_error
 
-
-    # perform a mqlread and return the results
+    # Perform a mqlread and return the results
+    # Specify :cursor => true to batch the results of a query, sending multiple requests if necessary.
     # TODO: should support multiple queries
     #       you should be able to pass an array of queries
-    # Specify :cursor => true to batch the results of a query, sending multiple requests if necessary.
     def mqlread(query, options = {})
       Ken.logger.info ">>> Sending Query: #{query.to_json}"
       cursor = options[:cursor]
@@ -127,6 +125,5 @@ module Ken
       end
       Ken.logger.info("Wrote response to #{fname}")
     end
-    
   end # class Session
 end # module Ken

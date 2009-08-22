@@ -52,10 +52,17 @@ module Ken
       @views ||= Ken::Collection.new(types.map { |type| Ken::View.new(self, type) })
     end
     
-    # returns individual view based on the requested type
+    # returns individual view based on the requested type id
     # @api public
     def view(type)
-      types.each { |t| return Ken::View.new(self, t) if t.id =~ /^#{Regexp.escape(type)}$/ }
+      views.each { |v| return v if v.type.id =~ /^#{Regexp.escape(type)}$/}
+      nil
+    end
+    
+    # returns individual type based on the requested type id
+    # @api public
+    def type(type)
+      types.each { |t| return t if t.id =~ /^#{Regexp.escape(type)}$/}
       nil
     end
 
