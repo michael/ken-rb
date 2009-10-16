@@ -13,12 +13,13 @@ Also you can use this library as a Data Layer (instead of or in addition to Acti
 
 h2. Installation
 
-Use GitHub RubyGems:
+Use "Gemcutter":http://gemcutter.org RubyGems:
 
 <pre>
 <code>
-  $ gem sources -a http://gems.github.com (you only have to do this once)
-  $ sudo gem install michael-ken
+  $ gem install gemcutter
+  $ gem tumble
+  $ gem install ken
 </code>
 </pre>
 
@@ -27,7 +28,6 @@ In your Ruby files add:
 <pre>
 <code>
   require 'rubygems'
-  gem 'michael-ken'
   require 'ken'
 </code>
 </pre>
