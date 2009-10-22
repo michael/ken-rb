@@ -45,6 +45,8 @@ module Ken
     SERVICES = {
       :mqlread => '/api/service/mqlread',
       :mqlwrite => '/api/service/mqlwrite',
+      :blurb => '/api/trans/blurb',
+      :raw => '/api/trans/raw',
       :login => '/api/account/login',
       :upload => '/api/service/upload'
     }
@@ -90,6 +92,20 @@ module Ken
       end
       query_result
     end
+    
+    def raw_content(id, options = {})
+      puts raw_service_url
+      response = http_request raw_service_url+id, options
+      Ken.logger.info "<<< Received Raw Content Response: #{response}"
+      response
+    end
+    
+    def blurb_content(id, options = {})
+      puts blurb_service_url
+      response = http_request blurb_service_url+id, options
+      Ken.logger.info "<<< Received Blurb Content Response: #{response}"
+      response
+    end
 
     protected
     # returns parsed json response from freebase mqlread service
@@ -109,7 +125,7 @@ module Ken
     
     # encode parameters
     def params_to_string(parameters)
-      parameters.keys.map {|k| "#{URI.encode(k.to_s)}=#{URI.encode(parameters[k])}" }.join('&')
+      parameters.keys.map {|k| "#{URI.encode(k.to_s)}=#{URI.encode(parameters[k].to_s)}" }.join('&')
     end
     
     # does the dirty work
