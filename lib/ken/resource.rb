@@ -1,7 +1,7 @@
 module Ken
   class Resource
     include Extlib::Assertions
-    
+    extend Extlib::Assertions
     attr_reader :data
     
     # initializes a resource using a json result
@@ -9,6 +9,20 @@ module Ken
       assert_kind_of 'data', data, Hash
       @schema_loaded, @attributes_loaded, @data = false, false, data
       @data_fechted = data["/type/reflect/any_master"] != nil
+    end
+    
+    # Executes an Mql Query against the Freebase API and returns the result wrapped
+    # in a <tt>Resource</tt> Object.
+    #
+    # == Examples
+    #
+    #  Ken::Resource.get('/en/the_police') => #<Resource id="/en/the_police" name="The Police">
+    # @api public
+    def self.get(id)
+      assert_kind_of 'id', id, String
+      result = Ken.session.mqlread(FETCH_DATA_QUERY.merge!(:id => id))
+      raise ResourceNotFound unless result
+      Ken::Resource.new(result)
     end
     
     # resource id
@@ -123,7 +137,7 @@ module Ken
       fetch_data unless data_fetched?
       # master & value attributes
       raw_attributes = Ken::Util.convert_hash(@data["/type/reflect/any_master"])
-      raw_attributes.merge!(Ken::Util.convert_hash(@data["/type/reflect/any_value"]))
+      raw_attributes.merge!(Ken::Util.convert_hash(@data["/type/reflect/any_value"]))      
       @attributes = {}
       raw_attributes.each_pair do |a, d|
         properties.select { |p| p.id == a}.each do |p|

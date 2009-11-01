@@ -3,7 +3,7 @@ require 'test_helper'
 class SessionTest < Test::Unit::TestCase
   context "A Session instance" do
     setup do
-      Ken::Logger.new(STDOUT, :info)
+      # Ken::Logger.new(STDOUT, :info)
       Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
     end
     
@@ -23,13 +23,17 @@ class SessionTest < Test::Unit::TestCase
     should 'do cursored queries' do
       Ken.session.mqlread([{:type => '/chemistry/chemical_element'}], :cursor => true).length.should >= 117
     end
-
+    
     should 'do raw content requests' do
       Ken.session.raw_content("/guid/9202a8c04000641f800000000002c4f3").length.should >= 50
     end
     
     should 'do blurb content requests' do
       Ken.session.blurb_content("/guid/9202a8c04000641f800000000002c4f3", :maxlength => 200).length.should >= 50
+    end
+    
+    should 'do topic requests' do
+      Ken.session.topic("/en/the_police")
     end
   end # context
 end # SessionTest

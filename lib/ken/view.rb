@@ -1,15 +1,14 @@
-# provides an interface to view a resource as a specific type
+# provides an interface to view a subject (resource or topic) as a specific type
 # provides an interface for working with attributes, properties
 module Ken
   class View
     
     include Extlib::Assertions
     
-    # initializes a resource by json result
-    def initialize(resource, type)
-      assert_kind_of 'resource', resource, Ken::Resource
+    # initializes a subject (resource or topic) by json result
+    def initialize(subject, type)
       assert_kind_of 'type', type, Ken::Type
-      @resource, @type = resource, type
+      @subject, @type = subject, type
     end
     
     # @api public
@@ -31,7 +30,7 @@ module Ken
     # returns attributes which are member of the view's type
     # @api public
     def attributes
-      @resource.attributes.select { |a| a.property.type == @type}
+      @subject.attributes.select { |a| a.property.type == @type}
     end
     
     # search for an attribute by name and return it
@@ -44,7 +43,7 @@ module Ken
     # returns properties which are member of the view's type    
     # @api public
     def properties
-      @resource.properties.select { |p| p.type == @type}
+      @subject.properties.select { |p| p.type == @type}
     end
     
     # delegate to attribute

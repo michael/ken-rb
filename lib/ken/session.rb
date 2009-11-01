@@ -19,6 +19,7 @@ module Ken
   class AttributeNotFound < StandardError ; end
   class PropertyNotFound < StandardError ; end
   class ResourceNotFound < StandardError ; end
+  class TopicNotFound < StandardError ; end
   class ViewNotFound < StandardError ; end
   
   # partially taken from chris eppstein's freebase api
@@ -48,7 +49,8 @@ module Ken
       :blurb => '/api/trans/blurb',
       :raw => '/api/trans/raw',
       :login => '/api/account/login',
-      :upload => '/api/service/upload'
+      :upload => '/api/service/upload',
+      :topic => '/experimental/topic',
     }
 
     # get the service url for the specified service.
@@ -94,29 +96,36 @@ module Ken
     end
     
     def raw_content(id, options = {})
-      puts raw_service_url
       response = http_request raw_service_url+id, options
       Ken.logger.info "<<< Received Raw Content Response: #{response}"
       response
     end
     
     def blurb_content(id, options = {})
-      puts blurb_service_url
       response = http_request blurb_service_url+id, options
       Ken.logger.info "<<< Received Blurb Content Response: #{response}"
       response
+    end
+    
+    def topic(id, options = {})
+      options.merge!({:id => id})
+      
+      response = http_request topic_service_url+"/standard", options
+      result = JSON.parse response
+      inner = result[id]
+      handle_read_error(inner)
+      Ken.logger.info "<<< Received Topic Response: #{inner['result'].inspect}"
+      inner['result']
     end
 
     protected
     # returns parsed json response from freebase mqlread service
     def get_query_response(query, cursor=nil)
-      envelope = { :qname => {:query => query }}
+      envelope = { :qname => {:query => query, :escape => false }}
       envelope[:qname][:cursor] = cursor if cursor
       
       response = http_request mqlread_service_url, :queries => envelope.to_json
-      
       result = JSON.parse response
-      
       inner = result['qname']
       handle_read_error(inner)
       Ken.logger.info "<<< Received Response: #{inner['result'].inspect}"
@@ -132,7 +141,7 @@ module Ken
     def http_request(url, parameters = {})
       params = params_to_string(parameters)
       url << '?'+params unless params !~ /\S/
-
+            
       return Net::HTTP.get_response(::URI.parse(url)).body
       
       fname = "#{MD5.md5(params)}.mql"

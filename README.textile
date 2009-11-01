@@ -107,6 +107,9 @@ Freebase itself doesn't.~
                 #<Resource id="/guid/9202a8c04000641f8000000002fa20d3" name="Everything's Gone Green">, ... ]
     # e.g. => ["1980"]
   end
+  
+  # alternatively you can access them directly
+  resource.attribute('/music/artist/album') # => #<Attribute property="/music/artist/album">
 </code>
 </pre>
 
@@ -223,7 +226,7 @@ h3. Low Level API
 Sometimes you may want to do specific queries instead of inspecting Resources as a whole.
 In such a case you would want to use Ken's low level API.
 
-_mqlread_ works like the regular _mqlread service_, except that you are able to pass ruby hashes instead of JSON.
+_mqlread_ works like the regular _mqlread service_, except that you are able to pass Ruby hashes instead of JSON.
 And you don't have to deal with HTTP, parameter encoding and parsing JSON.
 
 <pre>
@@ -243,6 +246,62 @@ And you don't have to deal with HTTP, parameter encoding and parsing JSON.
 </code>
 </pre>
 
+
+h3. Topic API
+
+Please first have a look at the official "Topic HTTP API documentation":http://www.freebase.com/docs/topic_api . 
+
+The API provides general meta-data such as name, description, links and images for a given topic,
+as well as all properties directly related to that topic in the graph.
+The API wraps a series of MQL queries that are needed to get this data, which otherwise must be performed separately.
+So for gaining common interest information about a specific topic the Topic API is a way faster alternative to mqlread.
+
+The latest update of Ken provides an easy way to access Freebase Topics using Ruby.
+As usual Ken wraps the JSON result of the web service to convenient Ruby Objects.
+
+For now Ken only returns simple properties. Support for so called mediator properties (aka 'CVT') will be added later.
+To be honest, I just don't know how to wrap them appropriately using the existing Ken object model. Any API ideas are welcome, btw! ;)
+However, in the meanwhile you can access CVT's by using the plain JSON result returned by the low level Ken.session.topic method.
+
+
+The API for Topics is quite the same as for Resources.
+
+<pre>
+<code>
+t = Ken::Topic.get("/en/new_order")
+  # => <Topic id="/en/new_order" name="New Order">
+    
+t.types
+  # => [ #<Type id="/music/artist" name="Musical Artist">, #<Type id="/music/musical_group" name="Musical Group">, ... ]
+
+t.views
+  # => [ #<View type="/music/artist">, #<View type="/music/musical_group">, ... ]
+    
+t.properties
+  # => [ #<Property id="/music/artist/similar_artist" expected_type="/music/artist">, ... ]
+
+t.attributes
+  # => [ #<Attribute property="/music/artist/similar_artist">, #<Attribute property="/music/artist/album">, ... ]
+
+</code>
+</pre>
+
+Additionally you can access some general meta-data, most importantly the topic's description which otherwise would need an additional request to the raw service.
+
+<pre>
+<code>
+
+t.name # => "New Order"
+t.description # => "New Order were an English musical group formed in 1980 by Bernard Sumner ... "
+t.aliases # => [ "NewOrder", "Englandneworder" ]
+t.webpages # => [ {"url"=>"http://en.wikipedia.org/wiki/index.html?curid=22146", "text"=>"Wikipedia"}, ... ]
+t.url # => "http://www.freebase.com/view/en/new_order"
+t.thumbnail => "http://api.freebase.com/api/trans/image_thumb/en/new_order"
+
+</code>
+</pre>
+
+
 h2. Project Status
 
 h3. Features
@@ -255,6 +314,7 @@ h3. Features
 * Low Level API (mqlread)
 * Rails and Merb support
 * Views on Resources to group Attributes based on the Resource's types
+* Accessing Topics using the new Freebase Topic API
 
 h3. Roadmap
 

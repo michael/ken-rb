@@ -1,0 +1,751 @@
+{
+  "alias": [
+    "Sting & The Police"
+  ],
+  "description": "The Police were an English rock trio, from London, England, formed originally in 1977. The trio consisted of Gordon Sumner, CBE (born 2 October 1951), widely known by his stage name of Sting (lead vocals, bass guitar), Andy Summers (guitar, vocals) and Stewart Copeland (drums, vocals, percussion). The band became globally popular in the late 1970s and are generally regarded as one of the first New Wave groups to achieve mainstream success, playing a style of rock that was influenced by jazz, punk and reggae music. Their 1983 album, Synchronicity, was number one in the UK and the US and sold over 8,000,000 copies in the US. The band broke up in 1984, but reunited in early 2007 for a one-off world tour lasting until August 2008, in celebration of the 30th anniversary of their hit single \"Roxanne\" and also, to a lesser extent, that of their formation as a group. The Police have sold more than 50 million albums worldwide, and became the world's highest-earning musicians in 2008, thanks to...",
+  "id": "/en/the_police",
+  "properties": {
+    "/award/award_winner/awards_won": {
+      "expected_type": {
+        "id": "/award/award_honor",
+        "text": "Award Honor"
+      },
+      "properties": [
+        {
+          "id": "/award/award_honor/year",
+          "text": "Year"
+        },
+        {
+          "id": "/award/award_honor/award",
+          "text": "Award"
+        },
+        {
+          "id": "/award/award_honor/honored_for",
+          "text": "Winning work"
+        }
+      ],
+      "text": "Awards Won",
+      "values": [
+        {
+          "/award/award_honor/award": {
+            "expected_type": {
+              "id": "/award/award_category",
+              "text": "Award category"
+            },
+            "text": "Award",
+            "values": [
+              {
+                "id": "/en/grammy_award_for_best_pop_performance_by_a_duo_or_group_with_vocal",
+                "text": "Grammy Award for Best Pop Performance by a Duo or Group with Vocal",
+                "url": "http://www.freebase.com/view/en/grammy_award_for_best_pop_performance_by_a_duo_or_group_with_vocal"
+              }
+            ]
+          },
+          "/award/award_honor/honored_for": {
+            "expected_type": {
+              "id": "/award/award_winning_work",
+              "text": "Award-Winning Work"
+            },
+            "text": "Winning work",
+            "values": [
+              {
+                "id": "/guid/9202a8c04000641f8000000001275dd0",
+                "text": "Every Breath You Take",
+                "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000001275dd0"
+              }
+            ]
+          },
+          "/award/award_honor/year": {
+            "expected_type": {
+              "id": "/type/datetime",
+              "text": "Date/Time"
+            },
+            "text": "Year",
+            "values": [
+              {
+                "text": "1983",
+                "value": "1983"
+              }
+            ]
+          },
+          "text": "1983 - Grammy Award for Best Pop Performance by a Duo or Group with Vocal - Every Breath You Take"
+        },
+        {
+          "/award/award_honor/award": {
+            "expected_type": {
+              "id": "/award/award_category",
+              "text": "Award category"
+            },
+            "text": "Award",
+            "values": [
+              {
+                "id": "/en/grammy_award_for_best_rock_instrumental_performance",
+                "text": "Grammy Award for Best Rock Instrumental Performance",
+                "url": "http://www.freebase.com/view/en/grammy_award_for_best_rock_instrumental_performance"
+              }
+            ]
+          },
+          "/award/award_honor/honored_for": {
+            "expected_type": {
+              "id": "/award/award_winning_work",
+              "text": "Award-Winning Work"
+            },
+            "text": "Winning work",
+            "values": [
+              {
+                "id": "/guid/9202a8c04000641f800000000129a8a4",
+                "text": "Behind My Camel",
+                "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000129a8a4"
+              }
+            ]
+          },
+          "/award/award_honor/year": {
+            "expected_type": {
+              "id": "/type/datetime",
+              "text": "Date/Time"
+            },
+            "text": "Year",
+            "values": [
+              {
+                "text": "1981",
+                "value": "1981"
+              }
+            ]
+          },
+          "text": "1981 - Grammy Award for Best Rock Instrumental Performance - Behind My Camel"
+        },
+        {
+          "/award/award_honor/award": {
+            "expected_type": {
+              "id": "/award/award_category",
+              "text": "Award category"
+            },
+            "text": "Award",
+            "values": [
+              {
+                "id": "/en/grammy_award_for_best_rock_instrumental_performance",
+                "text": "Grammy Award for Best Rock Instrumental Performance",
+                "url": "http://www.freebase.com/view/en/grammy_award_for_best_rock_instrumental_performance"
+              }
+            ]
+          },
+          "/award/award_honor/honored_for": {
+            "expected_type": {
+              "id": "/award/award_winning_work",
+              "text": "Award-Winning Work"
+            },
+            "text": "Winning work",
+            "values": [
+              {
+                "id": "/guid/9202a8c04000641f80000000012bf0e0",
+                "text": "Reggatta de Blanc",
+                "url": "http://www.freebase.com/view/guid/9202a8c04000641f80000000012bf0e0"
+              }
+            ]
+          },
+          "/award/award_honor/year": {
+            "expected_type": {
+              "id": "/type/datetime",
+              "text": "Date/Time"
+            },
+            "text": "Year",
+            "values": [
+              {
+                "text": "1980",
+                "value": "1980"
+              }
+            ]
+          },
+          "text": "1980 - Grammy Award for Best Rock Instrumental Performance - Reggatta de Blanc"
+        }
+      ]
+    },
+    "/broadcast/artist/content": {
+      "expected_type": {
+        "id": "/broadcast/content",
+        "text": "Broadcast Content"
+      },
+      "text": "Content",
+      "values": [
+        {
+          "id": "/en/radioio_80s_pop",
+          "text": "radioIO 80s POP",
+          "url": "http://www.freebase.com/view/en/radioio_80s_pop"
+        },
+        {
+          "id": "/en/radioio_80s_new_wave",
+          "text": "radioIO 80s NEW WAVE",
+          "url": "http://www.freebase.com/view/en/radioio_80s_new_wave"
+        },
+        {
+          "id": "/en/kkjj_fm",
+          "text": "KKJJ-FM",
+          "url": "http://www.freebase.com/view/en/kkjj_fm"
+        },
+        {
+          "id": "/en/80s_and_more",
+          "text": "80s And More",
+          "url": "http://www.freebase.com/view/en/80s_and_more"
+        },
+        {
+          "id": "/guid/9202a8c04000641f8000000006e56f39",
+          "text": "WOMC",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000006e56f39"
+        },
+        {
+          "id": "/en/big_r_radio_warm_101_6",
+          "text": "Big R Radio - Warm 101.6",
+          "url": "http://www.freebase.com/view/en/big_r_radio_warm_101_6"
+        },
+        {
+          "id": "/en/wtic_fm",
+          "text": "WTIC-FM",
+          "url": "http://www.freebase.com/view/en/wtic_fm"
+        },
+        {
+          "id": "/en/radioio_shuffle",
+          "text": "radioIO shuffle",
+          "url": "http://www.freebase.com/view/en/radioio_shuffle"
+        },
+        {
+          "id": "/en/big_r_radio_soft_hits",
+          "text": "Big R Radio - Soft Hits",
+          "url": "http://www.freebase.com/view/en/big_r_radio_soft_hits"
+        },
+        {
+          "id": "/guid/9202a8c04000641f8000000006e7060c",
+          "text": "WQSR",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000006e7060c"
+        }
+      ]
+    },
+    "/music/artist/active_end": {
+      "expected_type": {
+        "id": "/type/datetime",
+        "text": "Date/Time"
+      },
+      "text": "Active as Musical Artist (end)",
+      "values": [
+        {
+          "text": "1986",
+          "value": "1986"
+        }
+      ]
+    },
+    "/music/artist/active_start": {
+      "expected_type": {
+        "id": "/type/datetime",
+        "text": "Date/Time"
+      },
+      "text": "Active as Musical Artist (start)",
+      "values": [
+        {
+          "text": "Jan 1977",
+          "value": "1977-01"
+        }
+      ]
+    },
+    "/music/artist/album": {
+      "expected_type": {
+        "id": "/music/album",
+        "text": "Musical Album"
+      },
+      "text": "Albums",
+      "values": [
+        {
+          "id": "/en/outlandos_damour",
+          "text": "Outlandos d'Amour",
+          "url": "http://www.freebase.com/view/en/outlandos_damour"
+        },
+        {
+          "id": "/en/reggatta_de_blanc",
+          "text": "Reggatta de Blanc",
+          "url": "http://www.freebase.com/view/en/reggatta_de_blanc"
+        },
+        {
+          "id": "/en/zenyatta_mondatta",
+          "text": "Zenyatta Mondatta",
+          "url": "http://www.freebase.com/view/en/zenyatta_mondatta"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000017dab4",
+          "text": "Ghost in the Machine",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000017dab4"
+        },
+        {
+          "id": "/guid/9202a8c04000641f8000000002f9e349",
+          "text": "Synchronicity",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000002f9e349"
+        },
+        {
+          "id": "/en/every_breath_you_take_the_singles",
+          "text": "Every Breath You Take: The Singles",
+          "url": "http://www.freebase.com/view/en/every_breath_you_take_the_singles"
+        },
+        {
+          "id": "/guid/9202a8c04000641f8000000002f9e3ca",
+          "text": "Greatest Hits",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000002f9e3ca"
+        },
+        {
+          "id": "/en/message_in_a_box_the_complete_recordings",
+          "text": "Message in a Box: The Complete Recordings",
+          "url": "http://www.freebase.com/view/en/message_in_a_box_the_complete_recordings"
+        },
+        {
+          "id": "/guid/9202a8c04000641f8000000002f9e2df",
+          "text": "Live!",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000002f9e2df"
+        },
+        {
+          "id": "/en/every_breath_you_take_the_classics",
+          "text": "Every Breath You Take: The Classics",
+          "url": "http://www.freebase.com/view/en/every_breath_you_take_the_classics"
+        }
+      ]
+    },
+    "/music/artist/genre": {
+      "expected_type": {
+        "id": "/music/genre",
+        "text": "Musical genre"
+      },
+      "text": "Musical Genres",
+      "values": [
+        {
+          "id": "/en/rock_music",
+          "text": "Rock music",
+          "url": "http://www.freebase.com/view/en/rock_music"
+        },
+        {
+          "id": "/en/ska",
+          "text": "Ska",
+          "url": "http://www.freebase.com/view/en/ska"
+        },
+        {
+          "id": "/en/reggae",
+          "text": "Reggae",
+          "url": "http://www.freebase.com/view/en/reggae"
+        },
+        {
+          "id": "/en/new_wave",
+          "text": "New Wave",
+          "url": "http://www.freebase.com/view/en/new_wave"
+        },
+        {
+          "id": "/en/post-punk",
+          "text": "Post-punk",
+          "url": "http://www.freebase.com/view/en/post-punk"
+        },
+        {
+          "id": "/en/pop_rock",
+          "text": "Pop rock",
+          "url": "http://www.freebase.com/view/en/pop_rock"
+        }
+      ]
+    },
+    "/music/artist/instruments_played": {
+      "expected_type": {
+        "id": "/music/instrument",
+        "text": "Musical instrument"
+      },
+      "text": "Instruments Played",
+      "values": [
+        {
+          "id": "/en/electric_guitar",
+          "text": "Electric guitar",
+          "url": "http://www.freebase.com/view/en/electric_guitar"
+        },
+        {
+          "id": "/en/drum",
+          "text": "Drum",
+          "url": "http://www.freebase.com/view/en/drum"
+        }
+      ]
+    },
+    "/music/artist/label": {
+      "expected_type": {
+        "id": "/music/record_label",
+        "text": "Record label"
+      },
+      "text": "Record Labels",
+      "values": [
+        {
+          "id": "/en/a_m_records",
+          "text": "A&M Records",
+          "url": "http://www.freebase.com/view/en/a_m_records"
+        },
+        {
+          "id": "/en/polydor_records",
+          "text": "Polydor Records",
+          "url": "http://www.freebase.com/view/en/polydor_records"
+        },
+        {
+          "id": "/en/illegal_records",
+          "text": "Illegal Records",
+          "url": "http://www.freebase.com/view/en/illegal_records"
+        },
+        {
+          "id": "/en/universal_music_group",
+          "text": "Universal Music Group",
+          "url": "http://www.freebase.com/view/en/universal_music_group"
+        }
+      ]
+    },
+    "/music/artist/origin": {
+      "expected_type": {
+        "id": "/location/location",
+        "text": "Location"
+      },
+      "text": "Place Musical Career Began",
+      "values": [
+        {
+          "id": "/en/london",
+          "text": "London",
+          "url": "http://www.freebase.com/view/en/london"
+        }
+      ]
+    },
+    "/music/artist/similar_artist": {
+      "expected_type": {
+        "id": "/music/artist",
+        "text": "Musical Artist"
+      },
+      "text": "Similar Artists",
+      "values": [
+        {
+          "id": "/en/sting",
+          "text": "Sting",
+          "url": "http://www.freebase.com/view/en/sting"
+        }
+      ]
+    },
+    "/music/artist/track": {
+      "expected_type": {
+        "id": "/music/track",
+        "text": "Musical Track"
+      },
+      "text": "Tracks Recorded",
+      "values": [
+        {
+          "id": "/guid/9202a8c04000641f800000000128acd5",
+          "text": "Message in a Bottle",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128acd5"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128acdc",
+          "text": "Can't Stand Losing You",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128acdc"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128acea",
+          "text": "Every Breath You Take",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128acea"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128acf8",
+          "text": "Walking on the Moon",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128acf8"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128ad0d",
+          "text": "Every Little Thing She Does Is Magic",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128ad0d"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128ad14",
+          "text": "De Do Do Do, De Da Da Da",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128ad14"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128ad3e",
+          "text": "Don't Stand So Close to Me",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128ad3e"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128ad45",
+          "text": "Roxanne",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128ad45"
+        },
+        {
+          "id": "/guid/9202a8c04000641f800000000128ad4c",
+          "text": "Roxanne '97 (Puff Daddy remix)",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000128ad4c"
+        },
+        {
+          "id": "/guid/9202a8c04000641f80000000012dba61",
+          "text": "Every Breath You Take",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f80000000012dba61"
+        }
+      ]
+    },
+    "/music/composer/compositions": {
+      "expected_type": {
+        "id": "/music/composition",
+        "text": "Composition"
+      },
+      "text": "Works Composed",
+      "values": [
+        {
+          "id": "/en/every_little_thing_she_does_is_magic",
+          "text": "Every Little Thing She Does Is Magic",
+          "url": "http://www.freebase.com/view/en/every_little_thing_she_does_is_magic"
+        },
+        {
+          "id": "/en/roxanne",
+          "text": "Roxanne",
+          "url": "http://www.freebase.com/view/en/roxanne"
+        },
+        {
+          "id": "/en/synchronicity_ii",
+          "text": "Synchronicity II",
+          "url": "http://www.freebase.com/view/en/synchronicity_ii"
+        },
+        {
+          "id": "/en/cant_stand_losing_you",
+          "text": "Can't Stand Losing You",
+          "url": "http://www.freebase.com/view/en/cant_stand_losing_you"
+        }
+      ]
+    },
+    "/music/lyricist/lyrics_written": {
+      "expected_type": {
+        "id": "/music/composition",
+        "text": "Composition"
+      },
+      "text": "Lyrics Written",
+      "values": [
+        {
+          "id": "/en/every_little_thing_she_does_is_magic",
+          "text": "Every Little Thing She Does Is Magic",
+          "url": "http://www.freebase.com/view/en/every_little_thing_she_does_is_magic"
+        },
+        {
+          "id": "/en/roxanne",
+          "text": "Roxanne",
+          "url": "http://www.freebase.com/view/en/roxanne"
+        },
+        {
+          "id": "/en/synchronicity_ii",
+          "text": "Synchronicity II",
+          "url": "http://www.freebase.com/view/en/synchronicity_ii"
+        },
+        {
+          "id": "/en/cant_stand_losing_you",
+          "text": "Can't Stand Losing You",
+          "url": "http://www.freebase.com/view/en/cant_stand_losing_you"
+        }
+      ]
+    },
+    "/music/musical_group/member": {
+      "expected_type": {
+        "id": "/music/group_membership",
+        "text": "Musical Group Membership"
+      },
+      "properties": [
+        {
+          "id": "/music/group_membership/member",
+          "text": "Member"
+        },
+        {
+          "id": "/music/group_membership/role",
+          "text": "Roles"
+        }
+      ],
+      "text": "Members Of Musical Group",
+      "values": [
+        {
+          "/music/group_membership/member": {
+            "expected_type": {
+              "id": "/music/group_member",
+              "text": "Musical Group Member"
+            },
+            "text": "Member",
+            "values": [
+              {
+                "id": "/en/sting",
+                "text": "Sting",
+                "url": "http://www.freebase.com/view/en/sting"
+              }
+            ]
+          },
+          "/music/group_membership/role": {
+            "expected_type": {
+              "id": "/music/performance_role",
+              "text": "Musical Performance Role"
+            },
+            "text": "Roles",
+            "values": [
+              {
+                "id": "/en/bass_guitar",
+                "text": "Bass guitar",
+                "url": "http://www.freebase.com/view/en/bass_guitar"
+              },
+              {
+                "id": "/en/lead_vocals",
+                "text": "Lead vocalist",
+                "url": "http://www.freebase.com/view/en/lead_vocals"
+              }
+            ]
+          },
+          "text": "Sting - Bass guitar/Lead vocalist"
+        },
+        {
+          "/music/group_membership/member": {
+            "expected_type": {
+              "id": "/music/group_member",
+              "text": "Musical Group Member"
+            },
+            "text": "Member",
+            "values": [
+              {
+                "id": "/en/stewart_copeland",
+                "text": "Stewart Copeland",
+                "url": "http://www.freebase.com/view/en/stewart_copeland"
+              }
+            ]
+          },
+          "/music/group_membership/role": {
+            "expected_type": {
+              "id": "/music/performance_role",
+              "text": "Musical Performance Role"
+            },
+            "text": "Roles",
+            "values": [
+              {
+                "id": "/en/vocals",
+                "text": "Vocals",
+                "url": "http://www.freebase.com/view/en/vocals"
+              },
+              {
+                "id": "/en/percussion_instrument",
+                "text": "Percussion",
+                "url": "http://www.freebase.com/view/en/percussion_instrument"
+              },
+              {
+                "id": "/en/drum",
+                "text": "Drum",
+                "url": "http://www.freebase.com/view/en/drum"
+              }
+            ]
+          },
+          "text": "Stewart Copeland - Vocals/Percussion/Drum"
+        },
+        {
+          "/music/group_membership/member": {
+            "expected_type": {
+              "id": "/music/group_member",
+              "text": "Musical Group Member"
+            },
+            "text": "Member",
+            "values": [
+              {
+                "id": "/en/andy_summers",
+                "text": "Andy Summers",
+                "url": "http://www.freebase.com/view/en/andy_summers"
+              }
+            ]
+          },
+          "/music/group_membership/role": {
+            "expected_type": {
+              "id": "/music/performance_role",
+              "text": "Musical Performance Role"
+            },
+            "text": "Roles",
+            "values": [
+              {
+                "id": "/en/vocals",
+                "text": "Vocals",
+                "url": "http://www.freebase.com/view/en/vocals"
+              },
+              {
+                "id": "/en/guitar",
+                "text": "Guitar",
+                "url": "http://www.freebase.com/view/en/guitar"
+              }
+            ]
+          },
+          "text": "Andy Summers - Vocals/Guitar"
+        }
+      ]
+    },
+    "/music/producer/albums_produced": {
+      "expected_type": {
+        "id": "/music/album",
+        "text": "Musical Album"
+      },
+      "text": "Albums Produced",
+      "values": [
+        {
+          "id": "/guid/9202a8c04000641f800000000017dab4",
+          "text": "Ghost in the Machine",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f800000000017dab4"
+        },
+        {
+          "id": "/guid/9202a8c04000641f8000000002f9e349",
+          "text": "Synchronicity",
+          "url": "http://www.freebase.com/view/guid/9202a8c04000641f8000000002f9e349"
+        },
+        {
+          "id": "/en/zenyatta_mondatta",
+          "text": "Zenyatta Mondatta",
+          "url": "http://www.freebase.com/view/en/zenyatta_mondatta"
+        }
+      ]
+    }
+  },
+  "text": "The Police",
+  "thumbnail": "http://api.freebase.com/api/trans/image_thumb/en/the_police",
+  "type": [
+    {
+      "id": "/music/artist",
+      "text": "Musical Artist"
+    },
+    {
+      "id": "/music/producer",
+      "text": "Record Producer"
+    },
+    {
+      "id": "/music/musical_group",
+      "text": "Musical Group"
+    },
+    {
+      "id": "/broadcast/artist",
+      "text": "Broadcast Artist"
+    },
+    {
+      "id": "/award/award_winner",
+      "text": "Award Winner"
+    },
+    {
+      "id": "/music/lyricist",
+      "text": "Lyricist"
+    },
+    {
+      "id": "/music/composer",
+      "text": "Composer"
+    }
+  ],
+  "url": "http://www.freebase.com/view/en/the_police",
+  "webpage": [
+    {
+      "text": "Wikipedia",
+      "url": "http://en.wikipedia.org/wiki/index.html?curid=57321"
+    },
+    {
+      "text": "Rock Band Artist",
+      "url": "http://www.rockband.com/music/artists/The_Police"
+    },
+    {
+      "text": "Discogs",
+      "url": "http://www.discogs.com/artist/Police,+The"
+    },
+    {
+      "text": "The Police - Official Site",
+      "url": "http://www.thepolice.com"
+    },
+    {
+      "text": "New York Times",
+      "url": "http://topics.nytimes.com/top/reference/timestopics/organizations/p/the_police/index.html"
+    }
+  ]
+}

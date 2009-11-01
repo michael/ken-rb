@@ -1,6 +1,5 @@
 module Ken
   class Attribute
-    
     include Extlib::Assertions
     attr_reader :property
     
@@ -51,6 +50,12 @@ module Ken
     # @api public
     def value_type?
       @property.value_type?
+    end
+    
+    # type, which attribute values of that property are expected to have
+    # @api public
+    def expected_type
+      @property.expected_type
     end
     
     private

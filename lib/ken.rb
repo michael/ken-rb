@@ -8,13 +8,14 @@ require 'addressable/uri'
 dir = Pathname(__FILE__).dirname.expand_path + 'ken'
 
 require dir + 'util'
+require dir + 'session'
 require dir + 'resource'
 require dir + 'type'
 require dir + 'view'
 require dir + 'property'
 require dir + 'attribute'
 require dir + 'collection'
-require dir + 'session'
+require dir + 'topic'
 require dir + 'logger'
 
 # init logger as soon as the library is required
@@ -117,10 +118,7 @@ module Ken
   #  Ken.get('/en/the_police') => #<Resource id="/en/the_police" name="The Police">
   # @api public
   def self.get(id)
-    assert_kind_of 'id', id, String
-    result = Ken.session.mqlread(FETCH_DATA_QUERY.merge!(:id => id))
-    raise ResourceNotFound unless result
-    Ken::Resource.new(result)
+    Ken::Resource.get(id)
   end
   
 end # module Ken
