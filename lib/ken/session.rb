@@ -120,11 +120,14 @@ module Ken
     end
     
     def search(query, options = {})
-      Ken.logger.info ">>> Sending Search Query: #{query.to_json}"
+      Ken.logger.info ">>> Sending Search Query: #{query}"
       options.merge!({:query => query})
       
       response = http_request search_service_url, options
       result = JSON.parse response
+      
+      handle_read_error(result)
+      
       Ken.logger.info "<<< Received Topic Response: #{result['result'].inspect}"
       result['result']
     end
@@ -152,6 +155,7 @@ module Ken
     def http_request(url, parameters = {})
       params = params_to_string(parameters)
       url << '?'+params unless params !~ /\S/
+      Ken.logger.info "<<< URL queried: #{url}"
             
       return Net::HTTP.get_response(::URI.parse(url)).body
       
