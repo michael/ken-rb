@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
      "History.txt",
      "LICENSE",
      "README.textile",
-     "README.txt",
      "Rakefile",
      "TODO",
      "VERSION",
