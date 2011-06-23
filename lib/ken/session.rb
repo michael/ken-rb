@@ -125,10 +125,8 @@ module Ken
       
       response = http_request search_service_url, options
       result = JSON.parse response
-      inner = result['result']
-      handle_read_error(inner)
-      Ken.logger.info "<<< Received Topic Response: #{inner['result'].inspect}"
-      inner
+      Ken.logger.info "<<< Received Topic Response: #{result['result'].inspect}"
+      result['result']
     end
 
     protected
