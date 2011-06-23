@@ -123,7 +123,7 @@ module Ken
       Ken.logger.info ">>> Sending Search Query: #{query.to_json}"
       options.merge!({:query => query})
       
-      response = http_request search_service_url+"/standard", options
+      response = http_request search_service_url, options
       result = JSON.parse response
       inner = result['result']
       handle_read_error(inner)
