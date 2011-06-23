@@ -51,6 +51,7 @@ module Ken
       :login => '/api/account/login',
       :upload => '/api/service/upload',
       :topic => '/experimental/topic',
+      :search => '/api/service/search'
     }
 
     # get the service url for the specified service.
@@ -116,6 +117,18 @@ module Ken
       handle_read_error(inner)
       Ken.logger.info "<<< Received Topic Response: #{inner['result'].inspect}"
       inner['result']
+    end
+    
+    def search(query, options = {})
+      Ken.logger.info ">>> Sending Search Query: #{query.to_json}"
+      options.merge!({:query => query})
+      
+      response = http_request search_service_url+"/standard", options
+      result = JSON.parse response
+      inner = result['result']
+      handle_read_error(inner)
+      Ken.logger.info "<<< Received Topic Response: #{inner['result'].inspect}"
+      inner
     end
 
     protected
