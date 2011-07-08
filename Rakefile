@@ -9,11 +9,6 @@ begin
     gem.email = "ma[at]zive[dot]at"
     gem.homepage = "http://github.com/michael/ken"
     gem.authors = ["michael"]
-    gem.add_dependency('extlib')
-    gem.add_dependency('json')
-    gem.add_dependency('addressable')
-    # gem.files = FileList["[A-Z]*.*"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
 rescue LoadError
