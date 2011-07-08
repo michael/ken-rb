@@ -51,6 +51,7 @@ module Ken
       :login => '/api/account/login',
       :upload => '/api/service/upload',
       :topic => '/experimental/topic',
+      :search => '/api/service/search'
     }
 
     # get the service url for the specified service.
@@ -117,6 +118,19 @@ module Ken
       Ken.logger.info "<<< Received Topic Response: #{inner['result'].inspect}"
       inner['result']
     end
+    
+    def search(query, options = {})
+      Ken.logger.info ">>> Sending Search Query: #{query}"
+      options.merge!({:query => query})
+      
+      response = http_request search_service_url, options
+      result = JSON.parse response
+      
+      handle_read_error(result)
+      
+      Ken.logger.info "<<< Received Topic Response: #{result['result'].inspect}"
+      result['result']
+    end
 
     protected
     # returns parsed json response from freebase mqlread service
@@ -141,6 +155,7 @@ module Ken
     def http_request(url, parameters = {})
       params = params_to_string(parameters)
       url << '?'+params unless params !~ /\S/
+      Ken.logger.info "<<< URL queried: #{url}"
             
       return Net::HTTP.get_response(::URI.parse(url)).body
       

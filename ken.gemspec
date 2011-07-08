@@ -13,15 +13,13 @@ Gem::Specification.new do |s|
   s.email = %q{ma[at]zive[dot]at}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.textile",
-     "README.txt"
+     "README.textile"
   ]
   s.files = [
     ".gitignore",
      "History.txt",
      "LICENSE",
      "README.textile",
-     "README.txt",
      "Rakefile",
      "TODO",
      "VERSION",

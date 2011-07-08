@@ -35,5 +35,10 @@ class SessionTest < Test::Unit::TestCase
     should 'do topic requests' do
       Ken.session.topic("/en/the_police")
     end
+    
+    should 'do search requests' do
+      Ken.session.search("the police").length.should >= 1
+    end
+    
   end # context
 end # SessionTest
