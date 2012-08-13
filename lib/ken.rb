@@ -22,7 +22,7 @@ require dir + 'logger'
 Ken::Logger.new(STDOUT, :error)
 
 # init default session
-Ken::Session.new('http://www.freebase.com', 'ma', 'xxxxx')
+Ken::Session.new('http://api.freebase.com', 'ma', 'xxxxx')
 
 module Ken
   extend Extlib::Assertions
