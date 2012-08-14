@@ -42,7 +42,7 @@ The Freebase Database can be thought of as a huge graph of interconnected nodes 
 knowledge (in a much more structured way than wikipedia does).
 That graph can be viewed at a higher level through an object-oriented lens which leads to easier interaction.
 To understand the fundamental Metaweb Architecture please read the official
-"MQL Reference guide":http://download.freebase.com/MQLReferenceGuide.pdf (with focus on Chapter 2)
+"MQL Reference guide":http://wiki.freebase.com/images/8/87/MQLReferenceGuide.pdf (with focus on Chapter 2)
 provided by Freebase.
 
 In addition, you can learn a lot by employing the Freebase "Query Editor":http://www.freebase.com/tools/queryeditor/.
